@@ -1,4 +1,5 @@
 # Tested with Python 3.11.15 on a CPU. These are the versions used for the last clean run.
+# They need Python 3.11 or newer.
 numpy==2.4.4
 scipy==1.17.1
 pandas==3.0.2

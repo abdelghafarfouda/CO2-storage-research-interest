@@ -8,6 +8,8 @@ The examples support a research proposal. The deep-learning model is untrained, 
 
 This repository adapts my own work in computational mathematics, data science and machine learning, deep learning, and seismic to a CO₂ storage research question. External methods, software, datasets and any specifically identified supplied material are credited where used.
 
+The notebooks are saved with their outputs, so they can be read on GitHub without installing anything. To run them yourself, see [How to run](#how-to-run).
+
 ## The four notebooks
 
 The formal question of my PhD research proposal (draft v0.6.3) is:
@@ -38,7 +40,7 @@ The examples illustrate methods and checks. No reservoir simulation has been run
 
 ## From my work to evaluation
 
-Where each method appears, as notebook section and cell id (cell ids are stored in the notebooks, so a link such as `nb03-s6-known` finds the cell).
+Where each method appears, as notebook section and cell id. Cell ids are stored in the notebook files but are not shown when a notebook is displayed; to find a cell such as `nb03-s6-known`, go to its section, or search the raw `.ipynb` file for the id.
 
 | Area | Method from my work | Engineering use | Notebook section · cell | How it is evaluated |
 |---|---|---|---|---|
@@ -75,6 +77,8 @@ Values in square brackets are placeholders to be set with a supervisor before an
 
 ## How to run
 
+You need Git and Python 3.11 or newer: the pinned versions of NumPy, SciPy, pandas and scikit-learn do not install on older Python.
+
 ```bash
 git clone https://github.com/abdelghafarfouda/co2-storage-research-interest.git
 cd co2-storage-research-interest
@@ -84,6 +88,11 @@ pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu   # o
 pip install -r requirements.txt
 jupyter lab                          # then open a notebook and run all cells
 ```
+
+- **Python version.** On macOS and Linux the command may be `python3` rather than `python`. If `python --version` inside the environment shows a version older than 3.11, delete `.venv` and create it again with a newer interpreter, for example `python3.11 -m venv .venv`.
+- **CPU-only PyTorch.** The `torch` line is optional. It matters most on Linux, where the default PyTorch from PyPI also installs several gigabytes of GPU (CUDA) libraries. Run it before `pip install -r requirements.txt`: pip then treats the pinned `torch==2.14.0` as already installed.
+- **Running a notebook.** In JupyterLab, open a notebook and choose *Kernel → Restart Kernel and Run All Cells*, so that it runs from a clean kernel as it was saved.
+- **Checking all four at once.** `jupyter execute notebooks/*.ipynb` runs every notebook from a clean kernel without opening JupyterLab and without changing the saved files. It stops with an error if any cell fails, including the built-in checks (the `assert` statements in Notebooks 02 and 03). On Windows, where the shell does not expand `*`, name the four notebook files instead.
 
 Everything runs on a CPU, and the four notebooks together take under a minute. Random seeds are fixed in the code (mostly 42), so the printed numbers repeat. Only Notebook 03 needs PyTorch.
 
