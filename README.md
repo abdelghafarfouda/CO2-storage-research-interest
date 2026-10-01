@@ -118,7 +118,7 @@ The notebooks explain each term in plain words where it first appears and refer 
 - **Coverage target.** At least 0.90 of test realisations inside a simultaneous band for their whole post-shut-in trajectory, judged with a 95 % Clopper–Pearson interval.
 - **Cases.** A, assessment (rate and duration within pressure limits); B, operation (ranking injection schedules); C, monitoring (which data narrow forecasts, and whether they reveal a wrong boundary).
 
-Values in square brackets are placeholders to be set with a supervisor before any results exist. The hypotheses H1–H5 and the section numbers (§) cited in the notebooks refer to the proposal.
+Values in square brackets are placeholders to be set with a supervisor before any results exist. The section numbers (§) cited in the notebooks refer to the proposal, and so do its hypotheses, whose full statements are given there. The notebooks cite H1 in 01 §4.1, H2 in 03 §5.1 and §11, H4 in 03 §8, and H5 in 04 (introduction, §5 and §6); H3 is not cited.
 
 ## Viewing and running the notebooks
 
