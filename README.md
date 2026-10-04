@@ -1,77 +1,73 @@
-# CO₂ storage: predicting pressure and plume migration, and what monitoring can confirm
+# Reliable CO₂ Storage Forecasting and Monitoring
 
-I want to study how reservoir pressure and CO₂ movement change during injection and after it stops, and how monitoring can help us check our predictions.
+**[Read the research proposal →](docs/RESEARCH_PROPOSAL.md)** · [Pilot protocol](docs/PILOT_PROTOCOL.md) · [Entry notebook](notebooks/00_research_overview.ipynb)
 
-These four notebooks show how I would approach that question using computational mathematics, data science and machine learning, deep learning, and seismic methods. Each notebook uses small worked examples to explain a method, test it, and show where it could help with the engineering problem.
+## Supervisor overview
 
-The examples support a research proposal. The deep-learning model is untrained, and the full simulation, training and monitoring studies are proposed future work.
+**Question.** How reliably can we forecast reservoir pressure and CO₂ plume behaviour during injection and after shut-in, and can pressure and seismic observations reveal incorrect modelling assumptions?
 
-This repository adapts my own work in computational mathematics, data science and machine learning, deep learning, and seismic to a CO₂ storage research question. External methods, software, datasets and any specifically identified supplied material are credited where used.
+**Why it matters.** In closed and semi-closed formations, pressure build-up often limits how much CO₂ can be stored (Zhou et al., 2008). Whether overpressure stays or dissipates after shut-in depends on the outer hydraulic boundary, an uncertain assumption. A forecast that is wrong about it can still look precise. Three decisions depend on these forecasts:
 
-## The four notebooks
+- **Case A, storage assessment:** the largest rate and duration within an assumed pressure limit;
+- **Case B, operational decisions:** ranking injection schedules;
+- **Case C, monitoring and model checking:** whether observations agree with the model, or reveal a wrong assumption.
 
-The formal question of my PhD research proposal (draft v0.6.3) is:
+**Approach.** One workflow serves all three cases. A verified reference simulator produces trajectories, with its numerical and model-form errors measured. Fast forecasters, from material balance to hybrid physics–machine-learning models, predict whole trajectories with uncertainty bands calibrated by reservoir. Synthetic pressure observations, and later seismic observations, are tested against those bands to detect a deliberately wrong assumption at a stated false-alarm rate. Computational mathematics, statistics, machine learning, deep learning and seismic methods each enter where the workflow needs them.
 
-> **How reliably can reservoir pressure and CO₂ plume migration be predicted through injection and after shut-in, and what can pressure and seismic monitoring confirm about those predictions?**
+**What already exists.**
 
-Reservoir engineering and physical modelling are the core: pressure build-up and fall-off, a CO₂ inventory that must add up, and the physics of what gauges and time-lapse seismic can see. Each area answers one step of the question and measures one term of an *error budget*: the separate sources of error, each measured on the same quantities.
+- **Verified result** (peak pressure build-up only, layered model): in the completed [SubsurfaceML project](https://github.com/abdelghafarfouda/manchester-msc-projects/tree/68e532f/advanced-subsurface-modelling/SubsurfaceML) (merge commit `68e532f`), a verified radial CO₂–brine simulator and a hybrid surrogate predict **peak** build-up with 0.31 MPa RMSE on 100 reservoirs generated after the design was frozen. This does not show accuracy for whole trajectories or plume behaviour.
+- **Illustrative demonstrations:** four supporting notebooks show the methods on toy problems: reference checks, fair evaluation design, an **untrained** surrogate architecture and seismic detectability.
+- **Planned experiment:** everything else, including the first pilot.
 
-| Area | Notebook | Engineering question | Method | Error-budget term |
-|---|---|---|---|---|
-| Computational Mathematics | [01](notebooks/01_computational_mathematics_reference_checks.ipynb) · WP1 | Is the reference simulation right, and how wrong is it? | Verification: known answers, grid refinement and a mass balance | `e_num`, `e_mf` |
-| Data Science and Machine Learning | [02](notebooks/02_data_science_fair_tests.ipynb) · WP2 | Are the tests of a fast model fair, and how much geological uncertainty must a forecast resolve? | Test design: splits by realisation, paired shift cases, matched tuning budgets | `u_geo` |
-| Deep Learning | [03](notebooks/03_deep_learning_surrogate.ipynb) · WP3 | Can a fast network (a *surrogate*) replace the simulator, and how is that judged? | An untrained recurrent U-Net with built-in physical constraints; tests of accuracy and coverage | `e_sur` |
-| Seismic | [04](notebooks/04_seismic_monitoring_sensitivity.ipynb) · WP4 | What can time-lapse seismic see of a CO₂ layer? | Rock physics, synthetic traces and singular values | `e_obs` |
+**First pilot (planned, not run).** Does post-shut-in pressure reveal that a forecast wrongly assumes a sealed outer boundary? Each reservoir is simulated sealed and with an open boundary. Material-balance, statistical and hybrid forecasters are compared, with whole-trajectory bands calibrated on 100 fresh reservoirs, and detection power and false-alarm rate are measured on 100 further reservoirs generated after the protocol is frozen ([protocol](docs/PILOT_PROTOCOL.md)).
 
-## What is here, and what is not
+**Proposed contribution.** A reproducible, protocol-frozen benchmark of forecast reliability through injection and shut-in, and of the calibrated detectability of a wrong boundary assumption, compared with classical material-balance and well-test baselines. Novelty is not assumed. It will be established by a literature review and by those comparisons (proposal §12).
 
-Each notebook opens with a short introduction to its question, method and purpose. Then come (1) my work in that area; (2) how it is adapted to the CO₂ problem; (3) the worked examples, which run in seconds, each followed by how to read its result and what it means for the PhD; (4) how the work package will be evaluated, with the detailed rules; (5) assumptions and what has to change; and (6) a short status line with references. Each part carries one of four labels:
+**Main limitations.** Synthetic data only, with no field validation. The first reference model is radial and layered, with no gravity, dissolution or trapping, so its plume results describe that model only. Pressure limits used in examples are assumptions, not validated safety criteria.
+
+**Where to start.** Read the [proposal](docs/RESEARCH_PROPOSAL.md) (§1 is a one-paragraph summary, and §13 lists every piece of evidence with its status), then open [`notebooks/00_research_overview.ipynb`](notebooks/00_research_overview.ipynb).
+
+---
+
+## Status labels
+
+Every claim in this repository carries one of three labels.
 
 | Label | Meaning |
 |---|---|
-| **My work** | My own earlier work: implementations, completed exercises, analysis and explanations |
-| **Proposed adaptation** | What I plan to do in the PhD. Not done yet |
-| **Implemented example** | New code written for this repository, run on a textbook or toy problem, or on an untrained network |
-| **Evaluated result** | A tested research result. **There are none yet** |
+| **Verified result** | Obtained under a protocol frozen before the test data existed. The only verified results the proposal uses are in SubsurfaceML. |
+| **Illustrative demonstration** | Runs here in seconds on a textbook problem, toy data or an untrained network. It shows how a method or check works; its numbers are not findings. |
+| **Planned experiment** | Proposed research; not done yet. |
 
-The examples illustrate methods and checks. No reservoir simulation has been run for this project, and the numbers come from toy inputs, so they are not research findings. My original notebooks are not reproduced here; the four notebooks are new adaptations of that work.
+Notebook sections marked *Background* summarise the owner's earlier work that a demonstration builds on. They are context, not results.
 
-## From my work to evaluation
+## Repository contents
 
-Where each method appears, as notebook section and cell id (cell ids are stored in the notebooks, so a link such as `nb03-s6-known` finds the cell).
+| File | Purpose | Status |
+|---|---|---|
+| [`docs/RESEARCH_PROPOSAL.md`](docs/RESEARCH_PROPOSAL.md) | The complete research proposal (consolidated draft, October 2026) | — |
+| [`docs/PILOT_PROTOCOL.md`](docs/PILOT_PROTOCOL.md) | Reproducible protocol for the first pilot, ready to be frozen | Planned experiment |
+| [`notebooks/00_research_overview.ipynb`](notebooks/00_research_overview.ipynb) | Entry point: question, workflow, evidence and planned pilot. Reads repository files only | — |
 
-| Area | Method from my work | Engineering use | Notebook section · cell | How it is evaluated |
-|---|---|---|---|---|
-| Computational Mathematics | Exact solutions as checks | Theis build-up and fall-off with superposition; closed-box material balance; Horner line | 01 §3 · `nb01-s3-theis`, `nb01-s3-table`, `nb01-s3-horner` | OPM Flow pressure within a pre-set tolerance of the known answer (01 §5) |
-| | Observed order, Richardson extrapolation, grid-convergence index | Refinement of a mid-point and a threshold plume edge | 01 §4.1–4.2 · `nb01-s4-refine`, `nb01-s4-richardson` | Observed order and GCI, or an error bracket; gives `e_num` |
-| | Conservation and quadrature | Two-measure mass balance with a seeded 0.2 % inflow error (stand-in for the CO₂ inventory); free-phase CO₂ mass from maps | 01 §4.3 · `nb01-s4-massbalance`; 03 §6 · `nb03-s6-known` | Gap below [1e-6]; every check first catches its seeded defect |
-| | SVD and conditioning | What seismic data cannot separate | 04 §5 · `nb04-s5-svd` | Singular values in noise units across the prior range |
-| Data Science and ML | Split first; pipelines fitted on training data | Splits by realisation, before and after shut-in | 02 §4 · `nb02-s4-splits` | Test error of each split; only splits by realisation are used |
-| | Depth-window and spatial hold-outs | Paired shift design: held-out TEST geologies under baseline and shifted conditions, matched by geology id; an unseen AUDIT set | 02 §5 · `nb02-s5-design`, `nb02-s5-pairs`, `nb02-s5-checks` | Automated checks: unique cases, no geology leakage, a baseline for every shifted case, one factor per pair; AUDIT scored once |
-| | Learning curves | Ensemble size by realisation | 02 §6 · `nb02-s6-curve` | Where the curve stops falling |
-| | Tuning budgets and ensembles | Baselines at the same budget, compared by paired bootstrap (rule R1) | 02 §7 · `nb02-s7-tuning`, `nb02-s7-paired`, `nb02-s7-check` | 95 % interval of the paired difference |
-| | Thresholds for a target precision | Alarm for a wrong boundary (sealing fault) from gauge data | 02 §8 · `nb02-s8-alarm`, `nb02-s8-misses` | Test precision with a Clopper–Pearson interval; recall by fault distance |
-| Deep Learning | LSTM cell from its equations | ConvLSTM memory for pressure and plume maps | 03 §3 · `nb03-s3-cell`, `nb03-s3-check` | Shape and range checks |
-| | Softmax output | CO₂ inventory that adds up exactly; zero outflow for a closed boundary | 03 §4 · `nb03-s4-layer`, `nb03-s4-test` | Known-answer test |
-| | U-Net, rollout, parameter count | Recurrent U-Net surrogate (untrained), with the boundary openness as an input to its maps and series | 03 §5 · `nb03-s5-model`, `nb03-s5-forward`, `nb03-s5-checks`, `nb03-s5-boundary` | Controlled check that changes only the boundary; usefulness tests U1–U4 after training (03 §9) |
-| | Seeded training | Deep ensembles and conformal bands over whole trajectories | 03 §7–8 · `nb03-s7-toy`, `nb03-s8-repeat`, `nb03-s8-rule` | Rule R2; trajectory coverage of at least 0.90 |
-| Seismic | Impedance, reflection coefficients, Ricker wavelet and convolution; wedge model | Time-lapse synthetics of a thin CO₂ layer; tuning | 04 §4 · `nb04-s4-trace`, `nb04-s4-obs`, `nb04-s4-traces` | Known answer: no CO₂ gives no change; tuning near a quarter wavelength |
-| | RMS amplitude attribute; velocity and travel time | Amplitude change and time shift as measurements | 04 §4 · `nb04-s4-obs`, `nb04-s4-plot` | Response per metre of CO₂ against assumed noise |
-| | *New for the PhD:* Gassmann rock physics | CO₂ saturation to P-wave velocity, uniform and patchy mixing | 04 §3 · `nb04-s3-mixing`, `nb04-s3-check` | Mixing rules agree for brine only and CO₂ only; the rule is part of `e_obs` |
+**Supporting method notebooks.** Each shows one part of the workflow on small examples, followed by how that part will be evaluated in the research.
 
-## Key terms and rules from the proposal
+| Notebook | Role in the workflow | Status |
+|---|---|---|
+| [01 · Checking the reference simulation](notebooks/01_reference_simulation_checks.ipynb) | Known answers for pressure build-up and fall-off, grid refinement and Richardson extrapolation, a mass-balance check that first catches a seeded defect. Measures the reference error (`e_num`) | Illustrative demonstration |
+| [02 · Fair evaluation and a boundary alarm](notebooks/02_fair_evaluation_and_boundary_alarm.ipynb) | Splits by reservoir realisation, a paired shift design, matched tuning budgets, and a pressure alarm for a wrong boundary with its threshold set on separate cases (image-well model) | Illustrative demonstration |
+| [03 · Untrained surrogate architecture](notebooks/03_untrained_surrogate_architecture_demo.ipynb) | A recurrent U-Net with **random weights**: shapes, bounds, an inventory-total constraint, and two checks that expose its outputs as physically inconsistent. The design correction is documented, not implemented. Deferred in the proposal | Illustrative demonstration (**untrained**) |
+| [04 · Seismic detectability](notebooks/04_seismic_detectability.ipynb) | Gassmann substitution, thin-layer synthetics, tuning and time shift, singular values: what time-lapse seismic can and cannot resolve | Illustrative demonstration |
 
-The notebooks explain each term in plain words where it first appears and refer to sections of the proposal, which is not included in this repository. Its main terms and rules are:
+The notebooks refer to work-package labels WP1–WP4 and other labels from an earlier proposal draft. [Appendix B of the proposal](docs/RESEARCH_PROPOSAL.md#appendix-b-labels-used-in-the-notebooks) maps them.
 
-- **Decision quantities.** P1 peak bottom-hole pressure during injection; P2 average overpressure at shut-in, +5 and +10 years; P3 overpressure below the caprock and at a distant point; P4 time for overpressure to halve after shut-in; M1 CO₂ mass by state (mobile, immobile, dissolved); M2 plume footprint above a saturation threshold; M3 maximum up-dip migration distance.
-- **CO₂ inventory.** `M_inj(t) = M_mob(t) + M_imm(t) + M_diss(t) + M_out(t)`, where `M_out` is cumulative outflow across the model edge (zero for a closed boundary, and wherever the chosen boundary representation lets no CO₂ cross).
-- **Error budget.** `u_geo` spread across the geological prior; `e_num = R_h − R∞`, production-grid reference minus refined reference; `e_mf` differences between model levels; `e_sur = S − R_h`, surrogate minus reference; `e_obs` effect of rock-physics and noise choices. `R∞` estimates the converged solution of the model equations, and the surrogate's error against it is `S − R∞ = e_sur + e_num`. This is measured only on refined realisations; elsewhere it is estimated by an error indicator, which is checked on held-out refined realisations and is not a bound.
-- **Rules.** R1 a difference between methods is claimed only if a paired 95 % bootstrap interval excludes zero; R2 an advantage seen only against `R_h` and smaller than `|e_num|` is not claimed; R3 a surrogate is fit for a quantity only where the 90th percentile of `|S − R∞|` over refined test realisations is below [0.2] `u_geo`, and a verdict that rests on the indicator, or on a shift without refined cases of that shift, is reported as provisional; R4 model choice is reported as controlling where `e_mf` dominates; R5 every term is reported before and after shut-in.
-- **Usefulness tests.** U1 accuracy (R3); U2 added value over the best simpler method at the same tuning budget; U3 lower total cost, training data included, than an equally accurate coarse-grid simulation; U4 the same ranking of operating schedules as the reference.
-- **Coverage target.** At least 0.90 of test realisations inside a simultaneous band for their whole post-shut-in trajectory, judged with a 95 % Clopper–Pearson interval.
-- **Cases.** A, assessment (rate and duration within pressure limits); B, operation (ranking injection schedules); C, monitoring (which data narrow forecasts, and whether they reveal a wrong boundary).
+## Corrections made in this revision
 
-Values in square brackets are placeholders to be set with a supervisor before any results exist.
+- An unsourced field-case statement in Notebook 02 §8, a sealing-fault interpretation attributed to Snøhvit, has been removed. No primary source supporting that wording has been checked. The section now states only the physical point that its image-well model demonstrates.
+- The 0.31 MPa SubsurfaceML result is described as a **peak** build-up result, not as accuracy for complete trajectories.
+- Notebook 03 is labelled as an untrained architecture demonstration. Claims of physical consistency are withdrawn, and the required design correction is documented in its §6: inventories derived consistently from the maps, and nondecreasing cumulative outflow if that output is kept.
+- An open hydraulic boundary is no longer treated as implying CO₂ outflow. Zero outflow alone is not evidence of a defect (proposal §5.1).
+- The pilot is anchored to SubsurfaceML `68e532f`. The earlier E1 pilot branch, built on an older baseline and test split, is not merged, and its numbers are not used as results (proposal §8.2).
 
 ## How to run
 
@@ -82,17 +78,35 @@ python -m venv .venv
 source .venv/bin/activate            # on Windows: .venv\Scripts\activate
 pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu   # optional: the much smaller CPU-only PyTorch
 pip install -r requirements.txt
-jupyter lab                          # then open a notebook and run all cells
+jupyter lab                          # then open notebooks/00_research_overview.ipynb
 ```
 
-Everything runs on a CPU, and the four notebooks together take under a minute. Random seeds are fixed in the code (mostly 42), so the printed numbers repeat. Only Notebook 03 needs PyTorch.
+Notebook 00 uses only the Python standard library and runs in about a second. Notebooks 01–04 run on a CPU in under a minute together. Their random seeds are fixed (mostly 42), so the printed numbers repeat. Only Notebook 03 needs PyTorch. Notebooks 01–04 were last run from a clean kernel with Python 3.11.15 and the package versions in `requirements.txt`. In this revision only their text changed, not their code or outputs. No simulation, training or pilot experiment is run by anything in this repository.
 
-The notebooks use NumPy, SciPy, pandas, scikit-learn, Matplotlib and PyTorch. They were last run from a clean kernel with Python 3.11.15 and the package versions in `requirements.txt`. Methods, papers and other sources are cited at the end of each notebook.
+## Key references
 
-## How these materials were prepared
+Full lists are in the [proposal](docs/RESEARCH_PROPOSAL.md#references) and at the end of each notebook.
 
-This repository adapts my earlier work to a CO₂ storage research question. I used AI tools to help prepare the new notebooks and explanations.
+- Zhou, Q., Birkholzer, J. T., Tsang, C.-F. & Rutqvist, J. (2008). A method for quick assessment of CO₂ storage capacity in closed and semi-closed saline formations. *International Journal of Greenhouse Gas Control* 2(4), 626–639.
+- Nordbotten, J. M., Fernø, M. A., Flemisch, B., Kovscek, A. R. & Lie, K.-A. (2024). The 11th Society of Petroleum Engineers Comparative Solution Project: problem definition. *SPE Journal* 29(5), 2507–2524.
+- Lei, J., G'Sell, M., Rinaldo, A., Tibshirani, R. J. & Wasserman, L. (2018). Distribution-free predictive inference for regression. *Journal of the American Statistical Association* 113(523), 1094–1111.
+- Horne, R. N. (1995). *Modern Well Test Analysis: A Computer-Aided Approach*, 2nd edition. Petroway.
+- Grude, S., Landrø, M. & Osdal, B. (2013). Time-lapse pressure–saturation discrimination for CO₂ storage at the Snøhvit field. *International Journal of Greenhouse Gas Control* 19, 369–378.
 
-## Licence
+## Contribution and AI assistance
 
-No open-source licence has been granted for this repository. Third-party software remains under its own licences.
+- **Owner.** Abdelghafar Fouda owns this repository and is named as the author of the SubsurfaceML project, which was developed for the MSc module CHEN60482 *Advanced Subsurface Modelling* at the University of Manchester (see its README).
+- **Earlier work.** The notebooks' *Background* sections describe the owner's earlier coursework as stated in the notebooks. The original coursework notebooks are not reproduced here.
+- **AI assistance.** AI tools were used to prepare the notebooks and their explanations, as the previous version of this README stated. The SubsurfaceML README states that its October 2026 revision was implemented with an AI coding assistant (Claude, Anthropic) at the author's direction. In this revision, the proposal, the pilot protocol, this README, Notebook 00 and the notebook text changes were drafted by Claude Code, an AI coding assistant, at the owner's request, from the repository material and SubsurfaceML. They need the owner's review before they are shared.
+- External methods, software and data are credited where used.
+
+## Reuse status and owner decisions
+
+**Reuse status.** No open-source licence has been granted for this repository. Third-party software remains under its own licences. SubsurfaceML, in a separate repository, is MIT-licensed.
+
+**Decisions only the owner can make** (none blocks reading the proposal):
+
+1. Confirm or correct the contribution statement above, in particular which parts of the notebooks are your own work.
+2. Decide what to do with the two open pull requests: [abdelghafarfouda/co2-storage-research-interest#1](https://github.com/abdelghafarfouda/co2-storage-research-interest/pull/1), an earlier README revision now superseded, and [abdelghafarfouda/co2-storage-research-interest#2](https://github.com/abdelghafarfouda/co2-storage-research-interest/pull/2), the E1 pilot, which should not be merged as it stands. Both were left unchanged.
+3. Agree the planned settings (proposal Appendix A) with a prospective supervisor, then freeze the pilot protocol before any new test data are generated.
+4. Optionally, choose a licence if others should be able to reuse the material.
