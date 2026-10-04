@@ -1,0 +1,17 @@
+{
+  "model": "mlp_nophys",
+  "seed": 2,
+  "spec": {
+    "kind": "mlp",
+    "hidden": 128,
+    "layers": 3,
+    "features": "no_cumulative"
+  },
+  "n_params": 36098,
+  "epochs_run": 77,
+  "best_epoch": 16,
+  "best_val_loss": 0.46618977189064026,
+  "train_seconds": 5.121592982000038,
+  "inference_seconds_all_sets": 0.0963372649998746,
+  "n_scenarios_predicted": 1480
+}

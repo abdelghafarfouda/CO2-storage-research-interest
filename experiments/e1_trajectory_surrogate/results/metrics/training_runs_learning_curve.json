@@ -1,0 +1,575 @@
+{
+  "wall_seconds": 49.07487368400007,
+  "runs": [
+    {
+      "model": "lc_lstm_n12",
+      "seed": 0,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 12,
+      "epochs_run": 134,
+      "best_epoch": 73,
+      "best_val_loss": 0.05168764665722847,
+      "train_seconds": 2.038132970000106,
+      "inference_seconds_all_sets": 0.344945098999915,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n12",
+      "seed": 1,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 12,
+      "epochs_run": 97,
+      "best_epoch": 36,
+      "best_val_loss": 0.09268981963396072,
+      "train_seconds": 1.498512349000066,
+      "inference_seconds_all_sets": 0.24955855500002144,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n12",
+      "seed": 2,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 12,
+      "epochs_run": 144,
+      "best_epoch": 83,
+      "best_val_loss": 0.0506996251642704,
+      "train_seconds": 2.2176631180000186,
+      "inference_seconds_all_sets": 0.28539783099995475,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n12",
+      "seed": 3,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 12,
+      "epochs_run": 99,
+      "best_epoch": 38,
+      "best_val_loss": 0.07445379346609116,
+      "train_seconds": 1.7647114839999176,
+      "inference_seconds_all_sets": 0.34668302599993694,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n12",
+      "seed": 4,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 12,
+      "epochs_run": 165,
+      "best_epoch": 104,
+      "best_val_loss": 0.07366305589675903,
+      "train_seconds": 2.0744080339998163,
+      "inference_seconds_all_sets": 0.14804038299985223,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n25",
+      "seed": 0,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 25,
+      "epochs_run": 179,
+      "best_epoch": 118,
+      "best_val_loss": 0.015394325368106365,
+      "train_seconds": 4.562566143999902,
+      "inference_seconds_all_sets": 0.077734984000017,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n25",
+      "seed": 1,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 25,
+      "epochs_run": 102,
+      "best_epoch": 41,
+      "best_val_loss": 0.018346179276704788,
+      "train_seconds": 2.255442109000114,
+      "inference_seconds_all_sets": 0.1352913590001208,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n25",
+      "seed": 2,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 25,
+      "epochs_run": 198,
+      "best_epoch": 137,
+      "best_val_loss": 0.018331244587898254,
+      "train_seconds": 5.379132606999974,
+      "inference_seconds_all_sets": 0.15006488500011983,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n25",
+      "seed": 3,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 25,
+      "epochs_run": 96,
+      "best_epoch": 35,
+      "best_val_loss": 0.021559160202741623,
+      "train_seconds": 2.7194811719998597,
+      "inference_seconds_all_sets": 0.11026431000004777,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n25",
+      "seed": 4,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 25,
+      "epochs_run": 155,
+      "best_epoch": 94,
+      "best_val_loss": 0.017620574682950974,
+      "train_seconds": 3.6692142059998787,
+      "inference_seconds_all_sets": 0.08019367099996089,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n50",
+      "seed": 0,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 50,
+      "epochs_run": 169,
+      "best_epoch": 108,
+      "best_val_loss": 0.010680224746465683,
+      "train_seconds": 7.16794571399987,
+      "inference_seconds_all_sets": 0.1274292189998505,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n50",
+      "seed": 1,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 50,
+      "epochs_run": 142,
+      "best_epoch": 81,
+      "best_val_loss": 0.010584309697151184,
+      "train_seconds": 6.317048625000098,
+      "inference_seconds_all_sets": 0.07857485599993197,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n50",
+      "seed": 2,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 50,
+      "epochs_run": 153,
+      "best_epoch": 92,
+      "best_val_loss": 0.011895628646016121,
+      "train_seconds": 6.603094656999929,
+      "inference_seconds_all_sets": 0.07846453299998757,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n50",
+      "seed": 3,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 50,
+      "epochs_run": 146,
+      "best_epoch": 85,
+      "best_val_loss": 0.012759950943291187,
+      "train_seconds": 6.259825283999817,
+      "inference_seconds_all_sets": 0.09989281999992272,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_lstm_n50",
+      "seed": 4,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "n_fit_reservoirs": 50,
+      "epochs_run": 156,
+      "best_epoch": 95,
+      "best_val_loss": 0.011255075223743916,
+      "train_seconds": 6.263034877999871,
+      "inference_seconds_all_sets": 0.08515177200001744,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lc_xgb_n12",
+      "seed": 0,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1031,
+        304
+      ],
+      "n_fit_reservoirs": 12,
+      "train_seconds": 1.5884484820001035,
+      "inference_seconds_all_sets": 1.0769025179999971
+    },
+    {
+      "model": "lc_xgb_n12",
+      "seed": 1,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        738,
+        369
+      ],
+      "n_fit_reservoirs": 12,
+      "train_seconds": 1.4594077239999024,
+      "inference_seconds_all_sets": 0.7977402930000608
+    },
+    {
+      "model": "lc_xgb_n12",
+      "seed": 2,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        634,
+        475
+      ],
+      "n_fit_reservoirs": 12,
+      "train_seconds": 1.3019047089999276,
+      "inference_seconds_all_sets": 0.7067421140000079
+    },
+    {
+      "model": "lc_xgb_n12",
+      "seed": 3,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        853,
+        353
+      ],
+      "n_fit_reservoirs": 12,
+      "train_seconds": 1.4417062809998242,
+      "inference_seconds_all_sets": 0.7543726870001137
+    },
+    {
+      "model": "lc_xgb_n12",
+      "seed": 4,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        823,
+        348
+      ],
+      "n_fit_reservoirs": 12,
+      "train_seconds": 1.527432858000111,
+      "inference_seconds_all_sets": 0.7642571809999481
+    },
+    {
+      "model": "lc_xgb_n25",
+      "seed": 0,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1994,
+        1998
+      ],
+      "n_fit_reservoirs": 25,
+      "train_seconds": 6.301254216999951,
+      "inference_seconds_all_sets": 3.4234385530000964
+    },
+    {
+      "model": "lc_xgb_n25",
+      "seed": 1,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1541,
+        1795
+      ],
+      "n_fit_reservoirs": 25,
+      "train_seconds": 5.797740539000188,
+      "inference_seconds_all_sets": 2.6245722439998644
+    },
+    {
+      "model": "lc_xgb_n25",
+      "seed": 2,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1088,
+        1143
+      ],
+      "n_fit_reservoirs": 25,
+      "train_seconds": 3.7761319710000407,
+      "inference_seconds_all_sets": 1.7420377810001355
+    },
+    {
+      "model": "lc_xgb_n25",
+      "seed": 3,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1400,
+        1351
+      ],
+      "n_fit_reservoirs": 25,
+      "train_seconds": 4.239089328999853,
+      "inference_seconds_all_sets": 2.2680736199999956
+    },
+    {
+      "model": "lc_xgb_n25",
+      "seed": 4,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1965,
+        1680
+      ],
+      "n_fit_reservoirs": 25,
+      "train_seconds": 5.82094495299998,
+      "inference_seconds_all_sets": 3.097243280999919
+    },
+    {
+      "model": "lc_xgb_n50",
+      "seed": 0,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1545,
+        1857
+      ],
+      "n_fit_reservoirs": 50,
+      "train_seconds": 7.556371555999931,
+      "inference_seconds_all_sets": 2.845218556999953
+    },
+    {
+      "model": "lc_xgb_n50",
+      "seed": 1,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1971,
+        1574
+      ],
+      "n_fit_reservoirs": 50,
+      "train_seconds": 7.609049145999961,
+      "inference_seconds_all_sets": 2.8404208710001058
+    },
+    {
+      "model": "lc_xgb_n50",
+      "seed": 2,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1838,
+        1187
+      ],
+      "n_fit_reservoirs": 50,
+      "train_seconds": 6.655041383999787,
+      "inference_seconds_all_sets": 2.628245320000133
+    },
+    {
+      "model": "lc_xgb_n50",
+      "seed": 3,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1958,
+        1751
+      ],
+      "n_fit_reservoirs": 50,
+      "train_seconds": 7.8919978750000155,
+      "inference_seconds_all_sets": 3.1766210660000525
+    },
+    {
+      "model": "lc_xgb_n50",
+      "seed": 4,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1213,
+        1491
+      ],
+      "n_fit_reservoirs": 50,
+      "train_seconds": 5.680877481000152,
+      "inference_seconds_all_sets": 2.1315177369999674
+    }
+  ]
+}

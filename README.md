@@ -4,9 +4,13 @@ I want to study how reservoir pressure and CO₂ movement change during injectio
 
 These four notebooks show how I would approach that question using computational mathematics, data science and machine learning, deep learning, and seismic methods. Each notebook uses small worked examples to explain a method, test it, and show where it could help with the engineering problem.
 
-The examples support a research proposal. The deep-learning model is untrained, and the full simulation, training and monitoring studies are proposed future work.
+## Summary
 
-This repository adapts my own work in computational mathematics, data science and machine learning, deep learning, and seismic to a CO₂ storage research question. External methods, software, datasets and any specifically identified supplied material are credited where used.
+- **Objective.** A proposed PhD project on how reliably reservoir pressure and CO₂ plume migration can be predicted through injection and after shut-in, and what pressure and seismic monitoring can confirm about those predictions.
+- **Method.** Four work packages, one notebook each, that together measure an *error budget* (separate sources of error, each measured on the same quantities): checking the reference simulation (computational mathematics), fair tests for a fast surrogate model (data science and machine learning), a recurrent U-Net surrogate with built-in physical constraints (deep learning), and what time-lapse seismic can see of a CO₂ layer (seismic).
+- **Key result.** One evaluated pilot so far, [E1](experiments/e1_trajectory_surrogate). It uses 1,480 simulations from my MSc SubsurfaceML simulator: 880 from the study run and 600 new. A trained LSTM predicts whole pressure trajectories through injection and shut-in for unseen reservoirs. Its peak-pressure error matches the MSc scalar surrogate (1.22 vs 1.24 MPa). A memoryless model is as accurate once the cumulative injected mass is an input. Conformal whole-trajectory bands reach 91 % coverage against a 90 % target on held-out reservoirs, fall to 81 % under a permeability shift and to 3 % with an open boundary. The notebooks themselves remain worked examples on textbook solutions, toy data and an untrained network, and show why each check is needed. For example, on a toy ensemble a random row split gives an error 2.2 times lower than a split by realisation, and in a 4 m CO₂ layer the amplitude change and time shift cannot recover the saturation (a local result, with uniform mixing).
+- **Main limitation.** E1 uses a simplified radial simulator without gravity, capillary pressure or dissolution, and a single reservoir split. No OPM Flow reference simulation has been run, the U-Net of Notebook 03 is untrained, and the notebook numbers come from toy inputs. The full simulation, training and monitoring studies are proposed future work.
+- **How to run.** `pip install -r requirements.txt`, then `jupyter lab` and run all cells of a notebook. All four run on a CPU in under a minute together; see [How to run](#how-to-run).
 
 ## The four notebooks
 
@@ -23,7 +27,16 @@ Reservoir engineering and physical modelling are the core: pressure build-up and
 | Deep Learning | [03](notebooks/03_deep_learning_surrogate.ipynb) · WP3 | Can a fast network (a *surrogate*) replace the simulator, and how is that judged? | An untrained recurrent U-Net with built-in physical constraints; tests of accuracy and coverage | `e_sur` |
 | Seismic | [04](notebooks/04_seismic_monitoring_sensitivity.ipynb) · WP4 | What can time-lapse seismic see of a CO₂ layer? | Rock physics, synthetic traces and singular values | `e_obs` |
 
-## What is here, and what is not
+## Completed and proposed work
+
+In the notebooks, only the worked examples are complete. Experiment [E1](experiments/e1_trajectory_surrogate) adds a first trained and evaluated pilot on simulations from my simplified MSc simulator. Everything that needs the OPM Flow reference, a surrogate trained on it, or real monitoring data is proposed PhD research and has not been done.
+
+| Work package · notebook | Completed: implemented examples that run in this repository | Proposed: PhD research, not done yet |
+|---|---|---|
+| WP1 · [01](notebooks/01_computational_mathematics_reference_checks.ipynb) Computational Mathematics | Theis build-up and fall-off with superposition, a closed-box material balance and a Horner line, on a textbook pressure solution; grid refinement, Richardson extrapolation and a two-measure mass balance that catches a seeded defect, on a 1D model problem | The WP1 checks on the OPM Flow reference simulation (Theis and material-balance comparisons, a second code, the CO₂ inventory, grid and time-step refinement), giving `e_num` and `e_mf` |
+| WP2 · [02](notebooks/02_data_science_fair_tests.ipynb) Data Science and ML | A toy ensemble and four ways to split it; the paired shift design as a table, with no simulations, and its automated checks; a learning curve by realisation; a comparison at a matched tuning budget; an alarm for a wrong boundary. **Pilot on simulations: E1** (splits by reservoir, paired shift cases, baselines) | The simulated ensembles, shift cases and baselines, giving `u_geo` and the test sets |
+| WP3 · [03](notebooks/03_deep_learning_surrogate.ipynb) Deep Learning | A ConvLSTM memory cell; a softmax layer that keeps the CO₂ inventory exact; the recurrent U-Net, **untrained**, with a check that the boundary input reaches its outputs; bookkeeping checks; two toy studies of accuracy and trajectory coverage. **Pilot on simulations: E1** (trained LSTM, deep ensemble, conformal trajectory coverage) | Training on simulations, deep ensembles and the usefulness tests U1–U4, giving `e_sur` and the coverage |
+| WP4 · [04](notebooks/04_seismic_monitoring_sensitivity.ipynb) Seismic | Gassmann rock physics with two mixing rules; synthetic time-lapse traces with tuning and time shift; singular values of the sensitivity matrix at single points | The pressure sensitivity of the dry rock (§3.1, concept only); pressure gauges with noise and drift; ensemble inversion with the surrogate; the value of information, giving `e_obs` |
 
 Each notebook opens with a short introduction to its question, method and purpose. Then come (1) my work in that area; (2) how it is adapted to the CO₂ problem; (3) the worked examples, which run in seconds, each followed by how to read its result and what it means for the PhD; (4) how the work package will be evaluated, with the detailed rules; (5) assumptions and what has to change; and (6) a short status line with references. Each part carries one of four labels:
 
@@ -32,15 +45,25 @@ Each notebook opens with a short introduction to its question, method and purpos
 | **My work** | My own earlier work: implementations, completed exercises, analysis and explanations |
 | **Proposed adaptation** | What I plan to do in the PhD. Not done yet |
 | **Implemented example** | New code written for this repository, run on a textbook or toy problem, or on an untrained network |
-| **Evaluated result** | A tested research result. **There are none yet** |
+| **Evaluated result** | A tested research result. **So far one pilot: [E1](experiments/e1_trajectory_surrogate)**, on the simplified MSc simulator; none in the notebooks |
 
-The examples illustrate methods and checks. No reservoir simulation has been run for this project, and the numbers come from toy inputs, so they are not research findings. My original notebooks are not reproduced here; the four notebooks are new adaptations of that work.
+The notebook examples illustrate methods and checks; their numbers come from toy inputs, so they are not research findings. My original notebooks are not reproduced here; the four notebooks are new adaptations of that work.
+
+## Evaluated experiments
+
+Evaluated experiments replace the toy demonstrations step by step. Each lives in [`experiments/`](experiments) with its data specification, configuration, checkpoints, logs, metrics, figures, tests and run commands.
+
+| Experiment | Work packages | Status | What it tests |
+|---|---|---|---|
+| [E1 — trajectory surrogates](experiments/e1_trajectory_surrogate) | WP2, WP3 | Pilot, completed | LSTM, MLP, XGBoost and ridge models of pressure and plume-radius trajectories on 880 MSc SubsurfaceML simulations, split by reservoir. Deep-ensemble and conformal whole-trajectory bands. Three one-factor shifts (lower permeability, earlier shut-in, open boundary), 600 new simulations. |
+
+E1 puts parts of the WP2 and WP3 designs into practice on simulations: splits by realisation, paired shift cases, baselines, and trajectory coverage with Clopper–Pearson intervals. It uses the simplified MSc simulator, not the OPM Flow reference the proposal plans, so its findings are a pilot and not WP results.
 
 ## From my work to evaluation
 
-Where each method appears, as notebook section and cell id (cell ids are stored in the notebooks, so a link such as `nb03-s6-known` finds the cell).
+Where each method appears, as notebook section and cell id (cell ids are stored in the notebooks, so a link such as `nb03-s6-known` finds the cell). The cells listed are completed examples. The last column gives the evaluation planned for the PhD: the notebooks already apply many of these checks to toy data or the untrained network to show how they work, but applying them to reservoir simulations and a trained surrogate is proposed work.
 
-| Area | Method from my work | Engineering use | Notebook section · cell | How it is evaluated |
+| Area | Method from my work | Engineering use | Notebook section · cell | How it will be evaluated in the PhD |
 |---|---|---|---|---|
 | Computational Mathematics | Exact solutions as checks | Theis build-up and fall-off with superposition; closed-box material balance; Horner line | 01 §3 · `nb01-s3-theis`, `nb01-s3-table`, `nb01-s3-horner` | OPM Flow pressure within a pre-set tolerance of the known answer (01 §5) |
 | | Observed order, Richardson extrapolation, grid-convergence index | Refinement of a mid-point and a threshold plume edge | 01 §4.1–4.2 · `nb01-s4-refine`, `nb01-s4-richardson` | Observed order and GCI, or an error bracket; gives `e_num` |
@@ -89,9 +112,21 @@ Everything runs on a CPU, and the four notebooks together take under a minute. R
 
 The notebooks use NumPy, SciPy, pandas, scikit-learn, Matplotlib and PyTorch. They were last run from a clean kernel with Python 3.11.15 and the package versions in `requirements.txt`. Methods, papers and other sources are cited at the end of each notebook.
 
-## How these materials were prepared
+## Contribution
 
-This repository adapts my earlier work to a CO₂ storage research question. I used AI tools to help prepare the new notebooks and explanations.
+I developed this project, and the earlier work in computational mathematics, data science and machine learning, deep learning and seismic that it adapts, myself. AI tools were subsequently used to help publish it on GitHub and make minor quality improvements.
+
+The evaluated experiments in [`experiments/`](experiments) are later work. Their code, runs and write-ups were produced with an AI coding assistant (Claude Code) at my request, building on my MSc SubsurfaceML simulator and data. Each experiment's README states this.
+
+## References and credits
+
+Methods, papers and software are cited in the *References and further reading* list at the end of each notebook. Material that my earlier work reused is credited where that work is summarised (§1 of each notebook):
+
+- **Data Science and Machine Learning.** The exercise datasets were supplied with the course material, which acknowledges that most of its data were put together with Prof. Cedric John (Notebook 02 §1).
+- **Deep Learning.** The transfer-learning exercise was adapted from the PyTorch *Transfer learning for computer vision* tutorial (Notebook 03 §1 and references).
+- **Seismic.** The Practical 1 wedge model and wavelet were built with the open-source bruges library (Agile Scientific, Apache-2.0 licence); the real CMP gather in the Practical 2 bonus is credited in the practical to Rob Allen (VoilA project) (Notebook 04 §1 and references).
+
+My original notebooks, the course datasets and the practical data are not reproduced in this repository.
 
 ## Licence
 

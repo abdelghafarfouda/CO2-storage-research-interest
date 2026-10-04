@@ -1,0 +1,20 @@
+{
+  "model": "lc_xgb_n50",
+  "seed": 4,
+  "spec": {
+    "n_estimators": 2000,
+    "learning_rate": 0.03,
+    "max_depth": 6,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "early_stopping_rounds": 100,
+    "features": "full"
+  },
+  "best_iterations": [
+    1213,
+    1491
+  ],
+  "n_fit_reservoirs": 50,
+  "train_seconds": 5.680877481000152,
+  "inference_seconds_all_sets": 2.1315177369999674
+}

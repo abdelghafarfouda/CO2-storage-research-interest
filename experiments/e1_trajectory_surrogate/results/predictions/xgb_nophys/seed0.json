@@ -1,0 +1,19 @@
+{
+  "model": "xgb_nophys",
+  "seed": 0,
+  "spec": {
+    "n_estimators": 2000,
+    "learning_rate": 0.03,
+    "max_depth": 6,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "early_stopping_rounds": 100,
+    "features": "no_cumulative"
+  },
+  "best_iterations": [
+    83,
+    282
+  ],
+  "train_seconds": 1.54584775599983,
+  "inference_seconds_all_sets": 0.27448064800000793
+}

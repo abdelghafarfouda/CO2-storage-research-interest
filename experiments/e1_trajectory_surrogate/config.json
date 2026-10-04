@@ -1,0 +1,68 @@
+{
+  "experiment": "E1 trajectory surrogate (pilot)",
+  "source_data": {
+    "repository": "https://github.com/abdelghafarfouda/manchester-msc-projects",
+    "commit": "4bccd295cfa4dbae884288c5f7fed5a18d996501",
+    "path": "advanced-subsurface-modelling/SubsurfaceML/results/study",
+    "subsurfaceml_src_tree": "0741a442a661ebd605ffa5412b953e09dfaf541f",
+    "sha256": {
+      "data/scenarios.csv": "23c187dc8a59adf11b891aeacaac6a5616e995a64958c046e21c90e35b7485f5",
+      "data/timeseries.csv": "e939de9f6e3b76b97f61a3763553cca89e938224ac3e5a75c1393ee82aaabf57",
+      "metrics/summary.json": "06c03cbc000d3fc1fa7fdbed694bf7669081c9e85ab53d121c11f48aefa0a581"
+    }
+  },
+  "shift_sets": {
+    "repro_check": {"n": 8},
+    "shift_lowk": {"k_median_mD": [10.0, 30.0], "n_realisations": 40,
+                   "seed": 20261004, "realisation_id_offset": 1000},
+    "shift_shutin": {"shut_in_years": 3.75},
+    "shift_openbc": {"outer_bc": "constant_pressure"}
+  },
+  "data": {
+    "n_steps": 40,
+    "step_years": 0.25,
+    "inner_validation_fraction": 0.2,
+    "inner_validation_seed": 0
+  },
+  "training": {
+    "seeds": [0, 1, 2, 3, 4],
+    "max_epochs": 600,
+    "patience": 60,
+    "batch_size": 32,
+    "lr": 0.002,
+    "weight_decay": 1e-5,
+    "torch_threads": 1
+  },
+  "models": {
+    "lstm":        {"kind": "lstm", "hidden": 64, "layers": 1, "features": "full"},
+    "mlp":         {"kind": "mlp",  "hidden": 128, "layers": 3, "features": "full"},
+    "lstm_h16":    {"kind": "lstm", "hidden": 16, "layers": 1, "features": "full"},
+    "lstm_h128x2": {"kind": "lstm", "hidden": 128, "layers": 2, "features": "full"},
+    "lstm_nophys": {"kind": "lstm", "hidden": 64, "layers": 1, "features": "no_cumulative"},
+    "mlp_nophys":  {"kind": "mlp",  "hidden": 128, "layers": 3, "features": "no_cumulative"}
+  },
+  "baselines": {
+    "mean": {},
+    "ridge": {"alphas": [0.001, 0.01, 0.1, 1.0, 10.0, 100.0]},
+    "xgb": {"n_estimators": 2000, "learning_rate": 0.03, "max_depth": 6,
+            "subsample": 0.8, "colsample_bytree": 0.8, "early_stopping_rounds": 100,
+            "features": "full"},
+    "xgb_nophys": {"n_estimators": 2000, "learning_rate": 0.03, "max_depth": 6,
+                   "subsample": 0.8, "colsample_bytree": 0.8, "early_stopping_rounds": 100,
+                   "features": "no_cumulative"}
+  },
+  "learning_curve": {
+    "models": ["lstm", "xgb"],
+    "n_fit_reservoirs": [12, 25, 50],
+    "note": "the full 99-reservoir runs are the main lstm and xgb runs"
+  },
+  "uncertainty": {
+    "alpha": 0.10,
+    "ensemble_model": "lstm",
+    "score_floor_fraction": 0.05
+  },
+  "evaluation": {
+    "bootstrap_resamples": 2000,
+    "bootstrap_seed": 0
+  }
+}

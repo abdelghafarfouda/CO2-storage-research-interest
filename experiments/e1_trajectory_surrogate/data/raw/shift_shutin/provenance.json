@@ -1,0 +1,26 @@
+{
+  "set": "shift_shutin",
+  "description": "TEST reservoirs and schedules, injection stopped at 3.75 yr",
+  "n_requested": 220,
+  "n_success": 220,
+  "n_failed": 0,
+  "wall_time_s": 98.89396760600005,
+  "outer_bc": "closed",
+  "msc_repo_commit": "98264a583658a4b0319ae60dcc629205688d59be",
+  "subsurfaceml_src_tree": "0741a442a661ebd605ffa5412b953e09dfaf541f",
+  "environment": {
+    "python": "3.11.15",
+    "platform": "Linux-6.18.44-fc-v64-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "numpy": "2.4.4",
+    "scipy": "1.17.1",
+    "pandas": "3.0.2",
+    "scikit_learn": "1.8.0",
+    "xgboost": "3.2.0",
+    "git_commit": "98264a5"
+  },
+  "files_sha256": {
+    "scenarios.csv": "d01dd0896281b1c546dc64892ef7e6927ef456115b0195659da2efbbf39215a4",
+    "timeseries.csv": "26adfd13c97bce83ccba70f7fc8798d6c08c8192a11d7addfd32aa606e6a36f9"
+  }
+}

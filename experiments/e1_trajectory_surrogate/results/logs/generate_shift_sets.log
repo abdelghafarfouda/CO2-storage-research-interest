@@ -1,0 +1,6 @@
+[shift_lowk] 160 simulations (new reservoirs, k_median [10.0, 30.0] mD (training: 30-1000 mD))
+[shift_lowk] 160 ok, 0 failed, 80 s
+[shift_shutin] 220 simulations (TEST reservoirs and schedules, injection stopped at 3.75 yr)
+[shift_shutin] 220 ok, 0 failed, 99 s
+[shift_openbc] 220 simulations (TEST reservoirs and schedules, constant-pressure outer boundary)
+[shift_openbc] 220 ok, 0 failed, 59 s

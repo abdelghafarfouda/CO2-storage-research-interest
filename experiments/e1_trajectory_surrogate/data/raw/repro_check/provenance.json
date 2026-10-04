@@ -1,0 +1,31 @@
+{
+  "set": "repro_check",
+  "description": "unchanged TEST scenarios, re-simulated",
+  "n_requested": 8,
+  "n_success": 8,
+  "n_failed": 0,
+  "wall_time_s": 9.41411390299993,
+  "outer_bc": "closed",
+  "msc_repo_commit": "98264a583658a4b0319ae60dcc629205688d59be",
+  "subsurfaceml_src_tree": "0741a442a661ebd605ffa5412b953e09dfaf541f",
+  "environment": {
+    "python": "3.11.15",
+    "platform": "Linux-6.18.44-fc-v64-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "numpy": "2.4.4",
+    "scipy": "1.17.1",
+    "pandas": "3.0.2",
+    "scikit_learn": "1.8.0",
+    "xgboost": "3.2.0",
+    "git_commit": "98264a5"
+  },
+  "files_sha256": {
+    "scenarios.csv": "783435801790ddb014dc440f9a260e981d475b98cc5d1fd28749d9f5065c488f",
+    "timeseries.csv": "f7a3db0d9c2123441d76103adc2f326af13287c59960400a1b00be99572e9725"
+  },
+  "max_rel_diff_vs_stored": {
+    "dp_bh_Pa": 6.250843090731343e-08,
+    "r_plume_m95_m": 3.6043046328305184e-09,
+    "mass_in_place_kg": 2.8225183613822083e-13
+  }
+}
