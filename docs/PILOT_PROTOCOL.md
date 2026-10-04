@@ -37,7 +37,7 @@ Each adaptation is implemented in this repository, not in SubsurfaceML, by wrapp
 |---|---|---|
 | A1 | Record the pore-volume-weighted mean pressure at every report time | Sealed single-phase tank: mean overpressure equals injected mass / (ρ c_t V_p) to solver tolerance |
 | A2 | Report monthly for 24 months after shut-in, then quarterly | Re-simulating 8 development cases reproduces the stored quarterly series at the shared times (relative difference below 1e-6) |
-| A3 | Use the shut-in pressure diagnostic (`p_bh` during shut-in: the productivity-weighted pressure of a zero-net-rate wellbore; not a physical gauge reading) as the "well-side" observable | In a sealed case it converges to the mean pressure after relaxation. If it does not, the observable is switched to the mean pressure and the change is recorded before calibration data exist |
+| A3 | Use the shut-in pressure diagnostic (`p_bh` during shut-in: the productivity-weighted pressure of a zero-net-rate wellbore; not a physical gauge reading) as the primary synthetic "well-side" observable, an **idealised proxy** for a gauge | In a sealed case it converges to the mean pressure after relaxation. Passing this test is required before the proxy is interpreted as a gauge reading. If it fails, the failure is recorded before calibration data exist, and pressure detection is run only as the separate idealised-observation experiment of §6 |
 | A4 | Trajectory version of the SubsurfaceML reduced-order model: pseudo-steady-state tanks evaluated through the piecewise-constant schedule; after shut-in, well-side pressure set to the tank pressure | Reproduces the frozen reduced-order peak on development cases exactly; equals material balance after shut-in in a single-layer sealed tank |
 | A5 | Reproduction check of any reused E1 simulation under `68e532f` | Relative difference below 1e-6, or the simulation is regenerated |
 
@@ -46,7 +46,7 @@ Each adaptation is implemented in this repository, not in SubsurfaceML, by wrapp
 | Role | Reservoirs | Boundary variants | Seed | Use |
 |---|---|---|---|---|
 | Development: training and selection | 220 (SubsurfaceML development set; includes the 55 reservoirs E1 tested on) | sealed and open, × 4 schedules = 1,760 runs | 20260909 (existing) | fitting; grouped 5-fold CV for every design choice; detector development |
-| Calibration | 100 fresh | sealed and open, × 4 schedules = 800 runs | `SEED_CAL` (new; §9) | conformal bands and detector thresholds **only**. Open-boundary calibration runs are used only for D3's fitting, never for thresholds |
+| Calibration | 100 fresh | sealed only, × 4 schedules = 400 runs | `SEED_CAL` (new; §9) | conformal bands and alarm thresholds **only**. No forecaster or classifier is fitted on calibration reservoirs |
 | Independent test | 100 fresh | sealed and open, × 4 schedules = 800 runs | `SEED_TEST` (new; §9) | scored **once**, after the design and thresholds are frozen |
 
 Rules:
@@ -55,10 +55,13 @@ Rules:
 - Test data are generated **after** the protocol and the development-stage design addendum (§8) are pushed. Seeds must differ from every seed used before: 20260909, 20261004 (E1), 20261104, 20261105 and 20261106.
 - SubsurfaceML's final-test, shift and calibration-check reservoirs are **not** used as pilot test data. They were already scored or used for calibration there, and their time series are not stored.
 - E1's held-out reservoirs now train and are never described as independent test data.
+- All model fitting, including the D3 classifier, uses development reservoirs only. Calibration reservoirs set bands and alarm thresholds and nothing else.
 
 ## 6. Observations
 
-- **Well-side pressure** (A3), monthly for 24 months after shut-in. **Mean pressure** is reported as a forecast quantity, not as an observation. A real gauge does not measure it.
+- **Primary observable: the well-side pressure diagnostic** (A3), monthly for 24 months after shut-in. It is an idealised proxy for a well-side gauge, interpreted as a gauge reading only after it passes A3.
+- **Mean pressure** is a forecast quantity, not an observation. A real gauge does not measure it.
+- **Separate idealised-observation experiment** (only if A3 fails): detection is repeated with noisy mean pressure as the observation, with the same noise settings, windows and sealed calibration runs. Its results are reported in a separate section, with their own conclusions, which are not statements about gauge measurements.
 - **Noise:** independent Gaussian with σ = 0.01 MPa (primary). Sensitivity runs use σ = 0.05 MPa, and σ = 0.01 MPa plus a linear drift of 0.01 MPa per year with random sign. One noise realisation per case is drawn from a fixed seed, and the same realisation is used for the sealed and open variants, so that comparisons are paired.
 - **Windows:** the first 3, 6, 12 and 24 months after shut-in.
 
@@ -83,7 +86,7 @@ Every learned method gets the same tuning budget: 20 random-search trials, score
 
 - **D1 material-balance residual:** mean of `(Δp_MB − Δp_obs)/σ` over the last third of the window.
 - **D2 band exceedance:** an alarm if any observation in the window leaves the reservoir-calibrated 95 % band of F3 (or of the best forecaster by development CV).
-- **D3 statistical classifier:** logistic regression on the ratios of observed overpressure at the end of the window to that at shut-in and at the window midpoint. It is fitted on development sealed and open runs, with its threshold set on sealed calibration runs.
+- **D3 statistical classifier:** logistic regression on the ratios of observed overpressure at the end of the window to that at shut-in and at the window midpoint. It is fitted **only on development reservoirs**, using their sealed and open variants. Its threshold is set on the sealed calibration runs. No calibration reservoir is used to fit it.
 
 ## 8. Development stage and design addendum
 
@@ -112,7 +115,7 @@ On development data only, by grouped CV: choose the F3 learner settings, the σ�
 
 - **Power of 1 in the first window for every detector:** add graded mismatches (constant-pressure boundary at 2 r_e and 4 r_e) in a new protocol version, with new test seeds.
 - **Power near the false-alarm rate:** report the pilot as a negative result for pressure-only detection, and move the question to Stage 2 (pressure plus seismic).
-- **A3 fails:** use the mean pressure as the observable, labelled as an idealised observation.
+- **A3 fails:** the well-side proxy is not interpreted as a gauge reading. Pressure detection is reported only from the separate idealised-observation experiment of §6, and its conclusions are limited to idealised observations.
 
 ## 12. Next stage (not part of this pilot)
 
