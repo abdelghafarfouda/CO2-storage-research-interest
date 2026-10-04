@@ -183,7 +183,7 @@ Every candidate is compared with the simplest method that could answer the same 
 
 ### 6.3 Observation models
 
-- **Pressure** *(Pilot).* A synthetic gauge reading is the reference model's well-side pressure (the shut-in diagnostic of §5.2) or the mean reservoir pressure, sampled monthly after shut-in, plus independent Gaussian noise. A drift term is added in a sensitivity run (Appendix A). Observations are generated from the "truth" simulation, never from the forecaster.
+- **Pressure** *(Pilot).* The primary synthetic observable is the reference model's **well-side pressure diagnostic** (§5.2), sampled monthly after shut-in, plus independent Gaussian noise. A drift term is added in a sensitivity run (Appendix A). The diagnostic is an **idealised proxy** for a well-side gauge. It is interpreted as a gauge reading only after it passes the validation test of protocol A3. **Mean reservoir pressure** is a forecast quantity, not an observation. If A3 fails, detection with noisy mean pressure as the observation is run as a **separate idealised-observation experiment** with its own conclusions, which are not statements about gauge measurements (protocol §6 and §11). Observations are generated from the "truth" simulation, never from the forecaster.
 - **Time-lapse seismic** *(Stage 2).* The rock-physics and convolution chain of Notebook 04: Gassmann substitution with uniform or patchy mixing, normal-incidence synthetics, RMS amplitude and time shift, with stated noise. It is applied to saturation maps of the reference model. The pressure sensitivity of the dry rock is added before pressure and saturation effects are interpreted.
 
 ### 6.4 Detecting an incorrect assumption
@@ -192,7 +192,7 @@ A detector compares observations with what the assumed model predicts. It raises
 
 - **D1, material-balance residual:** the mean shortfall of observed late overpressure below the closed-tank level, standardised;
 - **D2, band exceedance:** an alarm if the observed trajectory leaves the forecaster's whole-trajectory band, calibrated by reservoir on noisy observations at level 1 − α, so that the false-alarm rate is controlled by construction when the assumptions hold;
-- **D3, simple statistical classifier:** logistic regression on a few summary features of the post-shut-in pressure, with its threshold set for the target false-alarm rate (as in Notebook 02 §8).
+- **D3, simple statistical classifier:** logistic regression on a few summary features of the post-shut-in pressure (as in Notebook 02 §8). It is fitted **only on development reservoirs**, using their sealed and open variants. Its alarm threshold is set on the sealed calibration reservoirs for the target false-alarm rate.
 
 Later, sequential versions such as CUSUM (Page, 1954) can answer *how soon* a wrong assumption is detected.
 
@@ -222,7 +222,7 @@ The forecaster's error against the converged solution is `S − R_∞ = e_sur + 
 ### 7.2 Independence and data roles
 
 - Every split and every cross-validation fold is **by whole reservoir**. A reservoir's schedules and boundary variants share its geology and stay together.
-- Four roles: **training**, **selection** (grouped cross-validation within the development set), **calibration** (bands and detector thresholds only) and **independent test** (scored once).
+- Four roles: **training**, **selection** (grouped cross-validation within the development set), **calibration** (bands and alarm thresholds only; no forecaster or classifier is ever fitted on calibration reservoirs) and **independent test** (scored once).
 - **Test reservoirs are generated after the protocol is frozen**, with new seeds recorded in the frozen protocol. No reservoir that was used for training or inspected during design is presented as independent test data.
 - Shifts change **one factor at a time** and are **paired** with unshifted versions of the same reservoir and schedule (Notebook 02 §5).
 
@@ -280,7 +280,7 @@ The unmerged E1 pilot on branch `claude/nice-sagan-y3cic1` used the earlier Subs
 ### 8.3 Outputs, adaptations and baselines
 
 - **Outputs:** the four pilot quantities of §5.1.
-- **Adaptations before any trajectory is forecast:** (a) record the pore-volume-weighted mean pressure at every report time; (b) report monthly for the first two years after shut-in, not only quarterly, so that relaxation is resolved (planned rationale: the diffusion time φμc_t r_e²/k ranges from about a month to a few years across the prior; it will be computed per reservoir before the freeze); (c) document the shut-in pressure diagnostic as the synthetic gauge reading and test it against mean pressure in a sealed tank; (d) extend the reduced-order model to trajectories (§6.1). Each adaptation gets a known-answer test before use.
+- **Adaptations before any trajectory is forecast:** (a) record the pore-volume-weighted mean pressure at every report time; (b) report monthly for the first two years after shut-in, not only quarterly, so that relaxation is resolved (planned rationale: the diffusion time φμc_t r_e²/k ranges from about a month to a few years across the prior; it will be computed per reservoir before the freeze); (c) adopt the shut-in pressure diagnostic as the primary synthetic observable, an idealised proxy, and validate it against mean pressure in a sealed tank before interpreting it as a gauge reading (protocol A3); (d) extend the reduced-order model to trajectories (§6.1). Each adaptation gets a known-answer test before use.
 - **Baselines:** training mean, material balance, the trajectory-adapted reduced-order model, ridge per step, the frozen SubsurfaceML hybrid for the peak, and detectors D1–D3 (§6.4).
 
 ### 8.4 Data roles (planned settings; rationale in Appendix A)
@@ -288,14 +288,14 @@ The unmerged E1 pilot on branch `claude/nice-sagan-y3cic1` used the earlier Subs
 | Role | Reservoirs | Simulations | Source |
 |---|---|---|---|
 | Training and selection (grouped 5-fold CV) | 220 | 880 sealed, re-run with the new outputs (they must reproduce the stored series) + 880 open | SubsurfaceML development prior and seed 20260909 |
-| Calibration (bands and detector thresholds only) | 100 | 400 sealed + 400 open | new seed, fixed at freeze |
+| Calibration (bands and alarm thresholds only; nothing is fitted on it) | 100 | 400 sealed | new seed, fixed at freeze |
 | Independent test (scored once) | 100 | 400 sealed + 400 open | new seed, fixed at freeze, generated after the freeze |
 
-Bands and thresholds are calibrated on noisy synthetic observations of the calibration reservoirs, one score per reservoir. The test is scored once. Reporting follows §7.3–7.4, with the outcome for each hypothesis stated, including negative outcomes.
+Bands and alarm thresholds are calibrated on noisy synthetic observations of the sealed calibration runs, one score per reservoir. Forecasters and the D3 classifier are fitted on development reservoirs only. The test is scored once. Reporting follows §7.3–7.4, with the outcome for each hypothesis stated, including negative outcomes.
 
 ### 8.5 Completion criteria
 
-The pilot is complete when the protocol has been frozen and pushed before the new data existed; all adaptations have passed their known-answer tests; the test has been scored once; every pre-specified metric has been reported with its interval; and the result for H2, H3 and H4 has been stated, whatever it is. A pilot that finds detection trivially easy (every open case detected within a month) or impossible is still complete. §11 gives the follow-up for each case.
+The pilot is complete when the protocol has been frozen and pushed before the new data existed; all adaptations have passed their known-answer tests (if A3 fails, the failure is recorded before calibration data exist, and pressure detection is reported only as the separate idealised-observation experiment); the test has been scored once; every pre-specified metric has been reported with its interval; and the result for H2, H3 and H4 has been stated, whatever it is. A pilot that finds detection trivially easy (every open case detected within a month) or impossible is still complete. §11 gives the follow-up for each case.
 
 ## 9. Staged work plan
 
@@ -311,7 +311,7 @@ Durations are indicative and are to be agreed with a supervisor.
 
 ## 10. Feasibility and computing budget
 
-- **Stage 1 runs on a CPU.** The SubsurfaceML full pipeline took 66 minutes on a 4-core virtual machine. That covers more than 1,700 simulations (880 development, 640 fresh test and shift, 215 refinement runs) plus model fitting. The pilot needs about 3,400 simulations of the same model (§8.4), which by extrapolation is a few hours on a similar machine. The estimate will be measured on a sample before the freeze.
+- **Stage 1 runs on a CPU.** The SubsurfaceML full pipeline took 66 minutes on a 4-core virtual machine. That covers more than 1,700 simulations (880 development, 640 fresh test and shift, 215 refinement runs) plus model fitting. The pilot needs about 3,000 simulations of the same model (§8.4), which by extrapolation is a few hours on a similar machine. The estimate will be measured on a sample before the freeze.
 - **Existing assets:** a verified simulator with tests and a reservoir-grouped evaluation pipeline (SubsurfaceML); conformal and dataset code on the E1 branch; illustrative checks in Notebooks 01–04.
 - **Stage 2:** the r–z model ran 60 simulations in 16 minutes, so a convergence study at up to 20 rows per layer on a few dozen cases is within a workstation budget.
 - **Stage 3** needs an OPM Flow installation and probably access to a computing cluster for SPE11-scale ensembles. The size of those ensembles is set by learning curves (Notebook 02 §6) and the available allocation.
@@ -334,7 +334,7 @@ Durations are indicative and are to be agreed with a supervisor.
 |---|---|
 | Detection is trivially easy for the end-member mismatch | Add graded mismatches (boundary at a larger radius, or a boundary transmissibility multiplier) as a pre-declared follow-up |
 | Detection fails for low-permeability reservoirs (slow diffusion) | Report power against dimensionless diffusion time; this is itself a monitoring-design result |
-| The shut-in pressure diagnostic is not a usable gauge reading | Use mean or well-block pressure as the observable and state the change |
+| The well-side pressure diagnostic fails its validation (protocol A3) | Do not interpret it as a gauge reading. Run detection with noisy mean pressure as a separate idealised-observation experiment, with separate conclusions that do not describe gauge measurements |
 | The r–z model does not converge vertically | Report the plume benchmark as bracketed and unconverged; move plume benchmarking to OPM Flow |
 | The literature review finds the gap already filled | Narrow the contribution to what remains open, for example the false-alarm-controlled comparison or the seismic increment |
 | Computing for Stage 3 is unavailable | Reduce ensemble sizes guided by learning curves; keep Stages 1–2 self-contained |
@@ -400,7 +400,7 @@ These replace the bracketed placeholders of earlier drafts. They are **planned s
 |---|---|---|
 | Nominal whole-trajectory coverage | 0.90, one score per reservoir | Matches SubsurfaceML. With 100 test reservoirs, the Clopper–Pearson interval around an observed 0.90 is about 0.82–0.95, enough to detect a large loss of coverage |
 | Target false-alarm rate | ≤ 0.05 per reservoir | Conventional level. With 100 calibration reservoirs the 95th-percentile threshold rests on about five exceedances. The resulting uncertainty is reported, not hidden |
-| Calibration and test sizes | 100 + 100 fresh reservoirs, × 4 schedules × 2 boundary variants | Same order as SubsurfaceML's fresh test (100). Affordable on a CPU (§10). Reservoir-level intervals of usable width |
+| Calibration and test sizes | 100 fresh calibration reservoirs × 4 schedules, sealed only; 100 fresh test reservoirs × 4 schedules × 2 boundary variants | Same order as SubsurfaceML's fresh test (100). Affordable on a CPU (§10). Reservoir-level intervals of usable width |
 | Fit threshold in R3 | 90th percentile of the error below 0.2 `u_geo` | A forecaster error under one fifth of the geological spread is small beside the uncertainty a decision must already carry. To be reviewed against the decision metrics of §7.5 |
 | Gauge noise | σ = 0.01 MPa white Gaussian; sensitivity runs at 0.05 MPa and with drift of 0.01 MPa per year | Order of a permanent downhole gauge's stated accuracy, to be checked against the specification of the gauge type assumed. The larger values stand in for unmodelled effects |
 | Observation schedule | monthly for 24 months after shut-in; windows 3, 6, 12 and 24 months | The diffusion time φμc_t r_e²/k ranges from about a month to a few years across the prior, so quarterly sampling under-resolves the faster relaxations |
