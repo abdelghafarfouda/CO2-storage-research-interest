@@ -1,0 +1,15 @@
+# Experiment E1. Tested with Python 3.11.15 on a 4-core Linux x86-64 CPU (no GPU).
+numpy==2.4.4
+scipy==1.17.1
+pandas==3.0.2
+scikit-learn==1.8.0
+xgboost==3.2.0
+torch==2.14.0          # the CPU-only build is enough
+matplotlib==3.10.9
+joblib==1.5.3
+pytest
+# Only to regenerate the shifted simulations and the scalar-surrogate reference
+# (scripts/generate_shift_sets.py, scripts/scalar_reference.py): install the
+# SubsurfaceML package from a checkout of manchester-msc-projects, e.g.
+#   pip install -r ../../../manchester-msc-projects/advanced-subsurface-modelling/SubsurfaceML/requirements-lock.txt
+#   pip install -e ../../../manchester-msc-projects/advanced-subsurface-modelling/SubsurfaceML --no-deps

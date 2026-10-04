@@ -1,0 +1,18 @@
+{
+  "model": "lc_lstm_n25",
+  "seed": 1,
+  "spec": {
+    "kind": "lstm",
+    "hidden": 64,
+    "layers": 1,
+    "features": "full"
+  },
+  "n_params": 39170,
+  "n_fit_reservoirs": 25,
+  "epochs_run": 102,
+  "best_epoch": 41,
+  "best_val_loss": 0.018346179276704788,
+  "train_seconds": 2.255442109000114,
+  "inference_seconds_all_sets": 0.1352913590001208,
+  "n_scenarios_predicted": 1480
+}

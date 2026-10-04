@@ -1,0 +1,17 @@
+{
+  "model": "lstm",
+  "seed": 4,
+  "spec": {
+    "kind": "lstm",
+    "hidden": 64,
+    "layers": 1,
+    "features": "full"
+  },
+  "n_params": 39170,
+  "epochs_run": 101,
+  "best_epoch": 40,
+  "best_val_loss": 0.012602818198502064,
+  "train_seconds": 7.805527053999981,
+  "inference_seconds_all_sets": 0.08166340100001435,
+  "n_scenarios_predicted": 1480
+}

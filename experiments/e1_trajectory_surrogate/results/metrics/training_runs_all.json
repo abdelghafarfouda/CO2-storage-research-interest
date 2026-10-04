@@ -1,0 +1,722 @@
+{
+  "wall_seconds": 134.711903666,
+  "runs": [
+    {
+      "model": "mean",
+      "seed": 0
+    },
+    {
+      "model": "ridge",
+      "seed": 0,
+      "alpha": 0.001,
+      "val_mse_by_alpha": {
+        "0.001": 0.023238589987158775,
+        "0.01": 0.023238658905029297,
+        "0.1": 0.023239457979798317,
+        "1.0": 0.023247623816132545,
+        "10.0": 0.023325275629758835,
+        "100.0": 0.02369118668138981
+      }
+    },
+    {
+      "model": "lstm",
+      "seed": 0,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "epochs_run": 92,
+      "best_epoch": 31,
+      "best_val_loss": 0.011967970058321953,
+      "train_seconds": 7.885559830000034,
+      "inference_seconds_all_sets": 0.3367555159999256,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm",
+      "seed": 1,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "epochs_run": 119,
+      "best_epoch": 58,
+      "best_val_loss": 0.010431788861751556,
+      "train_seconds": 10.10734719300001,
+      "inference_seconds_all_sets": 0.22751361899997846,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm",
+      "seed": 2,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "epochs_run": 102,
+      "best_epoch": 41,
+      "best_val_loss": 0.011280597187578678,
+      "train_seconds": 8.946073261000038,
+      "inference_seconds_all_sets": 0.3103119520000064,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm",
+      "seed": 3,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "epochs_run": 94,
+      "best_epoch": 33,
+      "best_val_loss": 0.012964685447514057,
+      "train_seconds": 7.8600153329999785,
+      "inference_seconds_all_sets": 0.3010142050000013,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm",
+      "seed": 4,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 39170,
+      "epochs_run": 101,
+      "best_epoch": 40,
+      "best_val_loss": 0.012602818198502064,
+      "train_seconds": 7.805527053999981,
+      "inference_seconds_all_sets": 0.08166340100001435,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_h16",
+      "seed": 0,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 16,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 2882,
+      "epochs_run": 135,
+      "best_epoch": 74,
+      "best_val_loss": 0.010919660329818726,
+      "train_seconds": 4.703597408000064,
+      "inference_seconds_all_sets": 0.02714099599995734,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_h16",
+      "seed": 1,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 16,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 2882,
+      "epochs_run": 140,
+      "best_epoch": 79,
+      "best_val_loss": 0.011784423142671585,
+      "train_seconds": 5.173554993999915,
+      "inference_seconds_all_sets": 0.03467795100004878,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_h16",
+      "seed": 2,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 16,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 2882,
+      "epochs_run": 145,
+      "best_epoch": 84,
+      "best_val_loss": 0.010952875949442387,
+      "train_seconds": 4.9302490329999955,
+      "inference_seconds_all_sets": 0.029107371000009152,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_h16",
+      "seed": 3,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 16,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 2882,
+      "epochs_run": 160,
+      "best_epoch": 99,
+      "best_val_loss": 0.010765429586172104,
+      "train_seconds": 6.028532754999901,
+      "inference_seconds_all_sets": 0.01937957700010884,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_h16",
+      "seed": 4,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 16,
+        "layers": 1,
+        "features": "full"
+      },
+      "n_params": 2882,
+      "epochs_run": 160,
+      "best_epoch": 99,
+      "best_val_loss": 0.010062544606626034,
+      "train_seconds": 6.153692616999933,
+      "inference_seconds_all_sets": 0.018588154999974904,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_h128x2",
+      "seed": 0,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 128,
+        "layers": 2,
+        "features": "full"
+      },
+      "n_params": 284162,
+      "epochs_run": 81,
+      "best_epoch": 20,
+      "best_val_loss": 0.011707262136042118,
+      "train_seconds": 37.58534897200002,
+      "inference_seconds_all_sets": 0.9637819690000242,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_h128x2",
+      "seed": 1,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 128,
+        "layers": 2,
+        "features": "full"
+      },
+      "n_params": 284162,
+      "epochs_run": 86,
+      "best_epoch": 25,
+      "best_val_loss": 0.010944996029138565,
+      "train_seconds": 34.62167905000001,
+      "inference_seconds_all_sets": 0.5546004660000108,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_h128x2",
+      "seed": 2,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 128,
+        "layers": 2,
+        "features": "full"
+      },
+      "n_params": 284162,
+      "epochs_run": 94,
+      "best_epoch": 33,
+      "best_val_loss": 0.013098352588713169,
+      "train_seconds": 42.756735275000096,
+      "inference_seconds_all_sets": 0.46860787899993284,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_h128x2",
+      "seed": 3,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 128,
+        "layers": 2,
+        "features": "full"
+      },
+      "n_params": 284162,
+      "epochs_run": 148,
+      "best_epoch": 87,
+      "best_val_loss": 0.009657270275056362,
+      "train_seconds": 65.93500016999997,
+      "inference_seconds_all_sets": 0.5243290560001697,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_h128x2",
+      "seed": 4,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 128,
+        "layers": 2,
+        "features": "full"
+      },
+      "n_params": 284162,
+      "epochs_run": 91,
+      "best_epoch": 30,
+      "best_val_loss": 0.012618259526789188,
+      "train_seconds": 31.406787058999953,
+      "inference_seconds_all_sets": 0.43591296099998544,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_nophys",
+      "seed": 0,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "no_cumulative"
+      },
+      "n_params": 38978,
+      "epochs_run": 234,
+      "best_epoch": 173,
+      "best_val_loss": 0.019505957141518593,
+      "train_seconds": 18.790386279000018,
+      "inference_seconds_all_sets": 0.08846597299998393,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_nophys",
+      "seed": 1,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "no_cumulative"
+      },
+      "n_params": 38978,
+      "epochs_run": 250,
+      "best_epoch": 189,
+      "best_val_loss": 0.020432457327842712,
+      "train_seconds": 19.73302657499994,
+      "inference_seconds_all_sets": 0.08958809299997483,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_nophys",
+      "seed": 2,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "no_cumulative"
+      },
+      "n_params": 38978,
+      "epochs_run": 123,
+      "best_epoch": 62,
+      "best_val_loss": 0.021952057257294655,
+      "train_seconds": 9.86578148600006,
+      "inference_seconds_all_sets": 0.10728124299998854,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_nophys",
+      "seed": 3,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "no_cumulative"
+      },
+      "n_params": 38978,
+      "epochs_run": 142,
+      "best_epoch": 81,
+      "best_val_loss": 0.020257646217942238,
+      "train_seconds": 11.719875829000102,
+      "inference_seconds_all_sets": 0.10511885300002177,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "lstm_nophys",
+      "seed": 4,
+      "spec": {
+        "kind": "lstm",
+        "hidden": 64,
+        "layers": 1,
+        "features": "no_cumulative"
+      },
+      "n_params": 38978,
+      "epochs_run": 217,
+      "best_epoch": 156,
+      "best_val_loss": 0.01682598888874054,
+      "train_seconds": 17.561078755999915,
+      "inference_seconds_all_sets": 0.10968701299998429,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "mlp",
+      "seed": 0,
+      "spec": {
+        "kind": "mlp",
+        "hidden": 128,
+        "layers": 3,
+        "features": "full"
+      },
+      "n_params": 36482,
+      "epochs_run": 83,
+      "best_epoch": 22,
+      "best_val_loss": 0.010762865655124187,
+      "train_seconds": 6.128796186000045,
+      "inference_seconds_all_sets": 0.11900257800016334,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "mlp",
+      "seed": 1,
+      "spec": {
+        "kind": "mlp",
+        "hidden": 128,
+        "layers": 3,
+        "features": "full"
+      },
+      "n_params": 36482,
+      "epochs_run": 85,
+      "best_epoch": 24,
+      "best_val_loss": 0.012009466998279095,
+      "train_seconds": 6.3276129749999654,
+      "inference_seconds_all_sets": 0.09286321300010059,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "mlp",
+      "seed": 2,
+      "spec": {
+        "kind": "mlp",
+        "hidden": 128,
+        "layers": 3,
+        "features": "full"
+      },
+      "n_params": 36482,
+      "epochs_run": 76,
+      "best_epoch": 15,
+      "best_val_loss": 0.01270128134638071,
+      "train_seconds": 5.860891918999869,
+      "inference_seconds_all_sets": 0.11199812800009568,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "mlp",
+      "seed": 3,
+      "spec": {
+        "kind": "mlp",
+        "hidden": 128,
+        "layers": 3,
+        "features": "full"
+      },
+      "n_params": 36482,
+      "epochs_run": 107,
+      "best_epoch": 46,
+      "best_val_loss": 0.01250122394412756,
+      "train_seconds": 7.942901782000035,
+      "inference_seconds_all_sets": 0.11552616699987084,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "mlp",
+      "seed": 4,
+      "spec": {
+        "kind": "mlp",
+        "hidden": 128,
+        "layers": 3,
+        "features": "full"
+      },
+      "n_params": 36482,
+      "epochs_run": 80,
+      "best_epoch": 19,
+      "best_val_loss": 0.011720563285052776,
+      "train_seconds": 6.0634004549999645,
+      "inference_seconds_all_sets": 0.10222020900005191,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "mlp_nophys",
+      "seed": 0,
+      "spec": {
+        "kind": "mlp",
+        "hidden": 128,
+        "layers": 3,
+        "features": "no_cumulative"
+      },
+      "n_params": 36098,
+      "epochs_run": 72,
+      "best_epoch": 11,
+      "best_val_loss": 0.47904133796691895,
+      "train_seconds": 5.425195553000094,
+      "inference_seconds_all_sets": 0.10210748200006492,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "mlp_nophys",
+      "seed": 1,
+      "spec": {
+        "kind": "mlp",
+        "hidden": 128,
+        "layers": 3,
+        "features": "no_cumulative"
+      },
+      "n_params": 36098,
+      "epochs_run": 76,
+      "best_epoch": 15,
+      "best_val_loss": 0.47720372676849365,
+      "train_seconds": 5.225729622000017,
+      "inference_seconds_all_sets": 0.09373389100005625,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "mlp_nophys",
+      "seed": 2,
+      "spec": {
+        "kind": "mlp",
+        "hidden": 128,
+        "layers": 3,
+        "features": "no_cumulative"
+      },
+      "n_params": 36098,
+      "epochs_run": 77,
+      "best_epoch": 16,
+      "best_val_loss": 0.46618977189064026,
+      "train_seconds": 5.121592982000038,
+      "inference_seconds_all_sets": 0.0963372649998746,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "mlp_nophys",
+      "seed": 3,
+      "spec": {
+        "kind": "mlp",
+        "hidden": 128,
+        "layers": 3,
+        "features": "no_cumulative"
+      },
+      "n_params": 36098,
+      "epochs_run": 75,
+      "best_epoch": 14,
+      "best_val_loss": 0.4550336003303528,
+      "train_seconds": 5.760833085000058,
+      "inference_seconds_all_sets": 0.08338284100000237,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "mlp_nophys",
+      "seed": 4,
+      "spec": {
+        "kind": "mlp",
+        "hidden": 128,
+        "layers": 3,
+        "features": "no_cumulative"
+      },
+      "n_params": 36098,
+      "epochs_run": 76,
+      "best_epoch": 15,
+      "best_val_loss": 0.46482500433921814,
+      "train_seconds": 4.829318782999962,
+      "inference_seconds_all_sets": 0.09138218599991887,
+      "n_scenarios_predicted": 1480
+    },
+    {
+      "model": "xgb",
+      "seed": 0,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1968,
+        1992
+      ],
+      "train_seconds": 12.127106255999934,
+      "inference_seconds_all_sets": 3.3633265850000953
+    },
+    {
+      "model": "xgb",
+      "seed": 1,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1999,
+        1994
+      ],
+      "train_seconds": 12.096674635999989,
+      "inference_seconds_all_sets": 3.3802291900001364
+    },
+    {
+      "model": "xgb",
+      "seed": 2,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1255,
+        1983
+      ],
+      "train_seconds": 9.87813391199984,
+      "inference_seconds_all_sets": 2.7448955229999683
+    },
+    {
+      "model": "xgb",
+      "seed": 3,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        372,
+        1994
+      ],
+      "train_seconds": 7.695398028,
+      "inference_seconds_all_sets": 1.6356937150001158
+    },
+    {
+      "model": "xgb",
+      "seed": 4,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "full"
+      },
+      "best_iterations": [
+        1281,
+        1989
+      ],
+      "train_seconds": 9.982997905000047,
+      "inference_seconds_all_sets": 2.85659425200015
+    },
+    {
+      "model": "xgb_nophys",
+      "seed": 0,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "no_cumulative"
+      },
+      "best_iterations": [
+        83,
+        282
+      ],
+      "train_seconds": 1.54584775599983,
+      "inference_seconds_all_sets": 0.27448064800000793
+    },
+    {
+      "model": "xgb_nophys",
+      "seed": 1,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "no_cumulative"
+      },
+      "best_iterations": [
+        71,
+        407
+      ],
+      "train_seconds": 1.783587328999829,
+      "inference_seconds_all_sets": 0.3430734940000093
+    },
+    {
+      "model": "xgb_nophys",
+      "seed": 2,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "no_cumulative"
+      },
+      "best_iterations": [
+        89,
+        266
+      ],
+      "train_seconds": 1.2640602579999722,
+      "inference_seconds_all_sets": 0.2083831630000077
+    },
+    {
+      "model": "xgb_nophys",
+      "seed": 3,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "no_cumulative"
+      },
+      "best_iterations": [
+        76,
+        199
+      ],
+      "train_seconds": 1.097712515000012,
+      "inference_seconds_all_sets": 0.1819320939998761
+    },
+    {
+      "model": "xgb_nophys",
+      "seed": 4,
+      "spec": {
+        "n_estimators": 2000,
+        "learning_rate": 0.03,
+        "max_depth": 6,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "early_stopping_rounds": 100,
+        "features": "no_cumulative"
+      },
+      "best_iterations": [
+        76,
+        226
+      ],
+      "train_seconds": 1.1118849530000716,
+      "inference_seconds_all_sets": 0.1825463719999334
+    }
+  ]
+}

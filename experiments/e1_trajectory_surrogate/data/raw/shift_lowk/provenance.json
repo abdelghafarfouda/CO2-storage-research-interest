@@ -1,0 +1,26 @@
+{
+  "set": "shift_lowk",
+  "description": "new reservoirs, k_median [10.0, 30.0] mD (training: 30-1000 mD)",
+  "n_requested": 160,
+  "n_success": 160,
+  "n_failed": 0,
+  "wall_time_s": 80.152752481,
+  "outer_bc": "closed",
+  "msc_repo_commit": "98264a583658a4b0319ae60dcc629205688d59be",
+  "subsurfaceml_src_tree": "0741a442a661ebd605ffa5412b953e09dfaf541f",
+  "environment": {
+    "python": "3.11.15",
+    "platform": "Linux-6.18.44-fc-v64-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "numpy": "2.4.4",
+    "scipy": "1.17.1",
+    "pandas": "3.0.2",
+    "scikit_learn": "1.8.0",
+    "xgboost": "3.2.0",
+    "git_commit": "98264a5"
+  },
+  "files_sha256": {
+    "scenarios.csv": "fb25cfb1b77da0ae405bf39089e4e0ff83990495b56a49694e9a0cdcf62b147f",
+    "timeseries.csv": "8cac9b1ac2524326936a1de9a7ff713346edfa53c924a38776bb1daee4f30c43"
+  }
+}

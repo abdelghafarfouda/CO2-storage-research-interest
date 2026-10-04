@@ -1,0 +1,17 @@
+{
+  "models": {
+    "dp_bh_max_MPa": "svr",
+    "r_plume_m95_m": "elasticnet",
+    "sweep_efficiency": "svr"
+  },
+  "model_files_sha256": {
+    "surrogate_dp_bh_max_MPa.joblib": "5a8fb36b1d373b91cf6676791fd9907e6eb9d337f2937c28b2c204bf64a6bc0f",
+    "surrogate_r_plume_m95_m.joblib": "b2cf0f246ffa400b6a31395e8448c70fe61e033578cc81af7dc30b7843752fb7",
+    "surrogate_sweep_efficiency.joblib": "f2d9af5406665e8ce8856a243fa8baa830dbb122948d5b69c4514e5997e91cf2",
+    "band_dp_bh_max_MPa.joblib": "10d9a2b4e6983990608f84f189ebe82e3d33665d3a05576769b9b83d3f5d3549",
+    "band_r_plume_m95_m.joblib": "7b5870079115424f043bcb1334e3e1bb5705483dcf6b56b0d6596a7eab8f6e7f",
+    "band_sweep_efficiency.joblib": "1ee4f4c465f2d208f1e871d8ca1e9f61eea49aba576e0f87e48c9664ba895def",
+    "pressure_classifier.joblib": "2a29738cbf3b15aa286e8d8ae4172d04180641279ed72aa642281c22b8ea9aca"
+  },
+  "msc_config": "config/study.yaml"
+}

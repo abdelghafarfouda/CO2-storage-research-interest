@@ -1,0 +1,119 @@
+{
+  "source": {
+    "repository": "https://github.com/abdelghafarfouda/manchester-msc-projects",
+    "commit": "4bccd295cfa4dbae884288c5f7fed5a18d996501",
+    "path": "advanced-subsurface-modelling/SubsurfaceML/results/study",
+    "subsurfaceml_src_tree": "0741a442a661ebd605ffa5412b953e09dfaf541f",
+    "sha256": {
+      "data/scenarios.csv": "23c187dc8a59adf11b891aeacaac6a5616e995a64958c046e21c90e35b7485f5",
+      "data/timeseries.csv": "e939de9f6e3b76b97f61a3763553cca89e938224ac3e5a75c1393ee82aaabf57",
+      "metrics/summary.json": "06c03cbc000d3fc1fa7fdbed694bf7669081c9e85ab53d121c11f48aefa0a581"
+    }
+  },
+  "sets": {
+    "id_study": {
+      "scenarios": 880,
+      "reservoirs": 220,
+      "by_partition": {
+        "calib": {
+          "scenarios": 164,
+          "reservoirs": 41
+        },
+        "fit": {
+          "scenarios": 396,
+          "reservoirs": 99
+        },
+        "test": {
+          "scenarios": 220,
+          "reservoirs": 55
+        },
+        "val": {
+          "scenarios": 100,
+          "reservoirs": 25
+        }
+      },
+      "dp_bh_MPa_range": [
+        0.005343251128043979,
+        32.44395832900729
+      ],
+      "r95_m_range": [
+        5.349636327170906,
+        780.5208927452419
+      ],
+      "k_median_mD_range": [
+        30.054420275975787,
+        996.5680183028808
+      ],
+      "npz_sha256": "8732ad1554e00933f93b7794ab6e1528460a48f588ac3f63b467a3ee60c11b25"
+    },
+    "shift_lowk": {
+      "scenarios": 160,
+      "reservoirs": 40,
+      "by_partition": {
+        "shift": {
+          "scenarios": 160,
+          "reservoirs": 40
+        }
+      },
+      "dp_bh_MPa_range": [
+        0.012382439558371901,
+        52.1746635944162
+      ],
+      "r95_m_range": [
+        5.95612957344069,
+        511.6077824057606
+      ],
+      "k_median_mD_range": [
+        10.164254558109063,
+        29.78045365196013
+      ],
+      "npz_sha256": "b0a640f470aace4c4aee154b727412734675ee62d9e2ed156398656ed6644a5d"
+    },
+    "shift_shutin": {
+      "scenarios": 220,
+      "reservoirs": 55,
+      "by_partition": {
+        "shift": {
+          "scenarios": 220,
+          "reservoirs": 55
+        }
+      },
+      "dp_bh_MPa_range": [
+        0.005343251128043979,
+        16.960167076465954
+      ],
+      "r95_m_range": [
+        5.349636327170906,
+        659.4320306367744
+      ],
+      "k_median_mD_range": [
+        30.05816229083316,
+        996.5680183028808
+      ],
+      "npz_sha256": "b228c502558b7d080dbd5c990f79d10d337f94835f9a6ba5ad77f856631be947"
+    },
+    "shift_openbc": {
+      "scenarios": 220,
+      "reservoirs": 55,
+      "by_partition": {
+        "shift": {
+          "scenarios": 220,
+          "reservoirs": 55
+        }
+      },
+      "dp_bh_MPa_range": [
+        -3.725290298461914e-15,
+        19.161166164434448
+      ],
+      "r95_m_range": [
+        5.4338135004631,
+        1125.42601528751
+      ],
+      "k_median_mD_range": [
+        30.05816229083316,
+        996.5680183028808
+      ],
+      "npz_sha256": "ad8a38bbd216c448821e043f2627c0d5932366d19e965d77d3cfd4eb30e5f9f2"
+    }
+  }
+}

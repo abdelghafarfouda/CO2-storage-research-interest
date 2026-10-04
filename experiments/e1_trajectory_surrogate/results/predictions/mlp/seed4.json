@@ -1,0 +1,17 @@
+{
+  "model": "mlp",
+  "seed": 4,
+  "spec": {
+    "kind": "mlp",
+    "hidden": 128,
+    "layers": 3,
+    "features": "full"
+  },
+  "n_params": 36482,
+  "epochs_run": 80,
+  "best_epoch": 19,
+  "best_val_loss": 0.011720563285052776,
+  "train_seconds": 6.0634004549999645,
+  "inference_seconds_all_sets": 0.10222020900005191,
+  "n_scenarios_predicted": 1480
+}

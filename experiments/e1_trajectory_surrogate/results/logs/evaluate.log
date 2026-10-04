@@ -1,0 +1,38 @@
+set          shift_lowk  shift_openbc  shift_shutin   test
+model                                                     
+lstm              1.789         5.439         0.497  0.670
+lstm_h128x2       1.792         5.535         0.513  0.693
+lstm_h16          1.780         5.551         0.489  0.664
+lstm_nophys       1.762         5.532         0.628  0.832
+mean              4.507         4.396         3.430  3.818
+mlp               1.428         5.579         0.503  0.658
+mlp_nophys        3.169         3.510         2.966  3.568
+ridge             2.180         5.774         0.769  1.058
+xgb               2.106         5.473         0.425  0.597
+xgb_nophys        3.247         3.516         2.875  3.456
+{
+ "n": 220,
+ "svr_rmse_vs_simulated_max_MPa": 1.2372590379628174,
+ "svr_rmse_vs_report_time_max_MPa": 1.2372656049372694,
+ "lstm_ensemble_rmse_vs_report_time_max_MPa": 1.224296533039732,
+ "lstm_single_seed_rmse_vs_report_time_max_MPa": [
+  1.2094032130742174,
+  1.392246210962052,
+  1.2634039079560035,
+  1.286215410066368,
+  1.2064999917838741
+ ],
+ "lstm_ensemble_rmse_vs_simulated_max_MPa": 1.2242975292215075,
+ "svr_band_coverage_of_simulated_max": 0.8772727272727273,
+ "cases_where_report_max_differs_from_simulated_max": 1,
+ "enet_r95_final_rmse_m": 10.510432457541814,
+ "lstm_ensemble_r95_final_rmse_m": 13.285843197476288,
+ "paired_lstm_minus_svr_vs_report_max": {
+  "diff": -0.012969071897537487,
+  "ci95": [
+   -0.12342671265348633,
+   0.17263224558556758
+  ],
+  "excludes_zero": false
+ }
+}

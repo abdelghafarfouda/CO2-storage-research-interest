@@ -1,0 +1,19 @@
+{
+  "model": "xgb",
+  "seed": 3,
+  "spec": {
+    "n_estimators": 2000,
+    "learning_rate": 0.03,
+    "max_depth": 6,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "early_stopping_rounds": 100,
+    "features": "full"
+  },
+  "best_iterations": [
+    372,
+    1994
+  ],
+  "train_seconds": 7.695398028,
+  "inference_seconds_all_sets": 1.6356937150001158
+}

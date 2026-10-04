@@ -1,0 +1,17 @@
+{
+  "model": "lstm_nophys",
+  "seed": 0,
+  "spec": {
+    "kind": "lstm",
+    "hidden": 64,
+    "layers": 1,
+    "features": "no_cumulative"
+  },
+  "n_params": 38978,
+  "epochs_run": 234,
+  "best_epoch": 173,
+  "best_val_loss": 0.019505957141518593,
+  "train_seconds": 18.790386279000018,
+  "inference_seconds_all_sets": 0.08846597299998393,
+  "n_scenarios_predicted": 1480
+}

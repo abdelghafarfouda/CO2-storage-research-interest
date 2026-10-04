@@ -1,0 +1,17 @@
+{
+  "model": "lstm_h128x2",
+  "seed": 2,
+  "spec": {
+    "kind": "lstm",
+    "hidden": 128,
+    "layers": 2,
+    "features": "full"
+  },
+  "n_params": 284162,
+  "epochs_run": 94,
+  "best_epoch": 33,
+  "best_val_loss": 0.013098352588713169,
+  "train_seconds": 42.756735275000096,
+  "inference_seconds_all_sets": 0.46860787899993284,
+  "n_scenarios_predicted": 1480
+}
