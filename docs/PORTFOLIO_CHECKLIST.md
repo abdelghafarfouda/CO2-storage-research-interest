@@ -18,12 +18,17 @@ Last updated: 2026-10-04 (Milestone 1).
 
 ## 1. Deep learning
 
-- [ ] **D1. One genuine trained-and-evaluated deep-learning experiment on CO₂
+- [x] **D1. One genuine trained-and-evaluated deep-learning experiment on CO₂
   simulation data**, with reservoir-level splits, baselines, multiple seeds,
   held-out accuracy, uncertainty, an out-of-distribution test, controlled
   comparisons of model complexity, and saved data spec, configuration,
-  checkpoints, logs, metrics, figures and commands. —
-  **In progress (Milestone 1):** [`experiments/e1_trajectory_surrogate`](../experiments/e1_trajectory_surrogate).
+  checkpoints, logs, metrics, figures and commands. — **Resolved as a pilot
+  (Milestone 1):** [`experiments/e1_trajectory_surrogate`](../experiments/e1_trajectory_surrogate).
+  It covers 880 + 600 simulations, the published reservoir split, 5 models ×
+  5 seeds, size and input ablations, a learning curve, conformal
+  whole-trajectory bands and three shifted test sets, with 11 tests. Broader
+  validation (repeated splits, a reference simulator with gravity) is still
+  open and stated in its README.
 - [ ] **D2. Spatial (field) surrogate** building on the ConvLSTM / U-Net of
   Notebook 03, trained on saturation and pressure fields. — **Open.** The
   stored study data hold only time series and a final saturation profile;
@@ -38,11 +43,13 @@ Last updated: 2026-10-04 (Milestone 1).
   reservoir. — **Open.** The failure is reported in the MSc README, not
   analysed.
 - [ ] **S3. Test generalisation beyond the training distribution.** —
-  **Open** for the MSc pipeline itself; E1 (Milestone 1) applies the published
-  scalar models to three shifted sets.
+  **Partly.** E1 applies the published SVR to three shifted sets. Its peak
+  RMSE rises from 1.24 MPa to 4.15 MPa at 10–30 mD and to 6.34 MPa with an
+  open boundary, and its P5–P95 band then covers 47 % and 1 % of cases. The
+  MSc pipeline itself does not yet run such tests.
 - [ ] **S4. Extend scalar predictions toward trajectories or fields.** —
-  **In progress:** E1 predicts whole pressure and plume-radius trajectories;
-  fields remain open (D2).
+  **Partly.** Trajectories are done in E1 (pressure and plume radius over
+  40 steps, peak accuracy equal to the scalar SVR); fields remain open (D2).
 - [ ] **S5. Missing physics: gravity, capillary pressure, dissolution,
   vertical crossflow**, through verified extensions or comparison with a
   reference simulator. — **Open.** A reference simulator (OPM Flow or MRST)
@@ -91,15 +98,17 @@ Last updated: 2026-10-04 (Milestone 1).
   The README states one question with four work packages; the link between
   them is not yet shown by results.
 - [ ] **R2. Replace toy demonstrations with evaluated experiments,
-  progressively.** — **In progress:** E1 is the first evaluated experiment;
-  the four notebooks are still toy demonstrations.
+  progressively.** — **Partly.** E1 is the first evaluated experiment (WP2
+  and WP3 designs on simulations); the four notebooks are still toy
+  demonstrations.
 - [ ] **R3. Self-contained explanation connected to verified portfolio
   findings.** — **Open.**
 
 ## 8. Presentation
 
-- [ ] **P1. Readable plots with units.** — **Partly.** New E1 figures carry
-  units; existing MSc figures not yet reviewed.
+- [ ] **P1. Readable plots with units.** — **Partly.** The six E1 figures
+  carry units and direct labels, use a colour-blind-checked palette and were
+  inspected after rendering; the existing MSc figures are not yet reviewed.
 - [ ] **P2. Concise explanations.** — **Partly:** opening summaries added in
   the open README pull requests (MSc #1, RI #2).
 - [ ] **P3. Licensing.** — **Partly.** The three MSc projects are MIT
@@ -111,11 +120,20 @@ Last updated: 2026-10-04 (Milestone 1).
 - [x] **P5. Accurate contribution statements and source credits.** —
   **Resolved in the open README pull requests** (MSc #1, RI #2), awaiting merge.
 - [ ] **P6. Distinguish new extensions and results from the original MSc
-  work.** — **Partly:** new work goes in `experiments/` of this repository,
-  each with a "what is new" statement.
+  work.** — **Partly.** New work goes in `experiments/` of this repository.
+  E1 has a "what is new" table and its own contribution statement (produced
+  with an AI coding assistant at the author's request). Extensions inside
+  the MSc repository are not yet labelled, because none exist yet.
 
 ## 9. Research output
 
 - [ ] **O1. Short paper draft around the strongest supported finding**, with
   methods, comparisons, uncertainty, limitations and reproducibility links. —
   **Open**, after the experiments.
+
+## Milestone log
+
+| Milestone | Date | Pull request | Items moved |
+|---|---|---|---|
+| 0. README review (contribution statements, summaries, split wording) | 2026-10-04 | MSc #1, RI #2 | P2, P5 |
+| 1. E1 deep-learning pilot | 2026-10-04 | RI #2 (same branch) | D1 resolved; S3, S4, R2, P1, P6 partly |

@@ -8,10 +8,11 @@
     "features": "full"
   },
   "n_params": 39170,
+  "n_fit_reservoirs": 99,
   "epochs_run": 92,
   "best_epoch": 31,
   "best_val_loss": 0.011967970058321953,
-  "train_seconds": 7.885559830000034,
-  "inference_seconds_all_sets": 0.3367555159999256,
+  "train_seconds": 8.475813611000149,
+  "inference_seconds_all_sets": 0.4995301470000868,
   "n_scenarios_predicted": 1480
 }
