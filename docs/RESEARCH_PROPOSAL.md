@@ -147,7 +147,7 @@ Two details of the layered model matter for observations. During shut-in all com
 |---|---|---|---|
 | SubsurfaceML development set: 220 reservoirs × 4 schedules = 880 cases, with time series (seed 20260909) | `results/study/data/` at `68e532f`; `timeseries.csv` SHA-256 `e939de9f…aabf57` | Pilot training and model selection only | Existing. The file is byte-identical to the one the E1 branch used |
 | SubsurfaceML final test (100 reservoirs, seed 20261104), shift (60, seed 20261105), calibration check (41, seed 20261106) | Same commit; scalar outputs only, no stored time series | Not used as pilot test data (§8.2) | Existing; already scored for peak build-up |
-| E1 branch data: 600 shifted simulations and 8 re-simulations | Unmerged branch `claude/nice-sagan-y3cic1` of this repository, generated with SubsurfaceML `4bccd29` | Development-stage material at most, after a reproduction check | Not merged (§13) |
+| Archived E1 pilot data: 600 shifted simulations and 8 re-simulations | Archived E1 pilot (unmerged), commit [`411db4f`](https://github.com/abdelghafarfouda/CO2-storage-research-interest/commit/411db4f42efc2e9319e4709dd10b62d056e7f950) of this repository: [`data/raw/`](https://github.com/abdelghafarfouda/CO2-storage-research-interest/tree/411db4f42efc2e9319e4709dd10b62d056e7f950/experiments/e1_trajectory_surrogate/data/raw) and [`data/processed/`](https://github.com/abdelghafarfouda/CO2-storage-research-interest/tree/411db4f42efc2e9319e4709dd10b62d056e7f950/experiments/e1_trajectory_surrogate/data/processed); generated with SubsurfaceML `4bccd29` | Development-stage material at most, after a reproduction check | Not merged (§13) |
 | New pilot simulations | To be generated with SubsurfaceML `68e532f`, under seeds recorded in the frozen protocol and never used before | Calibration and independent test (§8) | **Planned experiment** |
 | Toy data in Notebooks 01–04 | Generated in the notebooks | Illustration only | Illustrative demonstration |
 | Sleipner and Smeaheia public datasets | CO₂ data-sharing releases (access and licence to be confirmed) | Plausibility ranges for priors and rock physics only, not history matching | Planned for Stage 3; not obtained |
@@ -262,7 +262,7 @@ The forecaster's error against the converged solution is `S − R_∞ = e_sur + 
 
 ### 8.2 Anchoring to SubsurfaceML `68e532f`, and what carries over from E1
 
-The unmerged E1 pilot on branch `claude/nice-sagan-y3cic1` used the earlier SubsurfaceML commit `4bccd29`. It took the published scalar SVR (1.24 MPa peak RMSE) as its baseline and used the earlier 124/41/55 reservoir split. **It is not merged.** At `68e532f`:
+The unmerged Archived E1 pilot (commit [`411db4f`](https://github.com/abdelghafarfouda/CO2-storage-research-interest/commit/411db4f42efc2e9319e4709dd10b62d056e7f950), [experiment folder](https://github.com/abdelghafarfouda/CO2-storage-research-interest/tree/411db4f42efc2e9319e4709dd10b62d056e7f950/experiments/e1_trajectory_surrogate)) used the earlier SubsurfaceML commit `4bccd29`. It took the published scalar SVR (1.24 MPa peak RMSE) as its baseline and used the earlier 124/41/55 reservoir split. **It is not merged.** At `68e532f`:
 
 - the 55 reservoirs that E1 tested on were inspected while SubsurfaceML was revised, and **are now training reservoirs**. E1's held-out numbers are therefore development-stage results, not independent test results;
 - the scalar baseline is now the verified hybrid (0.31 MPa peak RMSE on 100 fresh test reservoirs). E1's comparisons with the old SVR are obsolete;
@@ -359,7 +359,7 @@ No component (conformal bands, hybrid physics–ML models, pressure-transient an
 | Reservoir-grouped splits, paired shift design, matched tuning budgets, boundary alarm on an image-well model | Illustrative demonstration | [Notebook 02](../notebooks/02_fair_evaluation_and_boundary_alarm.ipynb) |
 | Untrained recurrent U-Net: shapes, bounds and inventory-total constraint, and two bookkeeping checks that expose its physical inconsistency; toy studies of reference choice and whole-trajectory coverage | Illustrative demonstration (**untrained**; no physical consistency claimed) | [Notebook 03](../notebooks/03_untrained_surrogate_architecture_demo.ipynb) |
 | Gassmann substitution, thin-layer synthetics, tuning, singular values | Illustrative demonstration | [Notebook 04](../notebooks/04_seismic_detectability.ipynb) |
-| E1 trajectory pilot (unmerged branch) | Development-stage exploration; **not a verified result** (§8.2) | branch `claude/nice-sagan-y3cic1` |
+| Archived E1 pilot: trajectory surrogates (unmerged) | Development-stage exploration; **not a verified result** (§8.2) | commit [`411db4f`](https://github.com/abdelghafarfouda/CO2-storage-research-interest/commit/411db4f42efc2e9319e4709dd10b62d056e7f950), [`experiments/e1_trajectory_surrogate/`](https://github.com/abdelghafarfouda/CO2-storage-research-interest/tree/411db4f42efc2e9319e4709dd10b62d056e7f950/experiments/e1_trajectory_surrogate) |
 | The pilot of §8 and Stages 2–3 | Planned experiment | [`PILOT_PROTOCOL.md`](PILOT_PROTOCOL.md) |
 
 The 0.31 MPa result concerns **peak** pressure build-up only. It is not evidence of accuracy for complete pressure trajectories, for post-shut-in pressure or for plume quantities.
