@@ -93,11 +93,10 @@ Full lists are in the [proposal](docs/RESEARCH_PROPOSAL.md#references) and at th
 - Horne, R. N. (1995). *Modern Well Test Analysis: A Computer-Aided Approach*, 2nd edition. Petroway.
 - Grude, S., Landrø, M. & Osdal, B. (2013). Time-lapse pressure–saturation discrimination for CO₂ storage at the Snøhvit field. *International Journal of Greenhouse Gas Control* 19, 369–378.
 
-## Contribution and AI assistance
+## Attribution
 
 - **Owner.** Abdelghafar Fouda owns this repository and is named as the author of the SubsurfaceML project, which was developed for the MSc module CHEN60482 *Advanced Subsurface Modelling* at the University of Manchester (see its README).
 - **Earlier work.** The notebooks' *Background* sections describe the owner's earlier coursework as stated in the notebooks. The original coursework notebooks are not reproduced here.
-- **AI assistance.** AI tools were used to prepare the notebooks and their explanations, as the previous version of this README stated. The SubsurfaceML README states that its October 2026 revision was implemented with an AI coding assistant (Claude, Anthropic) at the author's direction. In this revision, the proposal, the pilot protocol, this README, Notebook 00 and the notebook text changes were drafted by Claude Code, an AI coding assistant, at the owner's request, from the repository material and SubsurfaceML. They need the owner's review before they are shared.
 - External methods, software and data are credited where used.
 
 ## Reuse status and owner decisions
@@ -106,7 +105,6 @@ Full lists are in the [proposal](docs/RESEARCH_PROPOSAL.md#references) and at th
 
 **Decisions only the owner can make** (none blocks reading the proposal):
 
-1. Confirm or correct the contribution statement above, in particular which parts of the notebooks are your own work.
-2. Decide what to do with the two open pull requests: [abdelghafarfouda/co2-storage-research-interest#1](https://github.com/abdelghafarfouda/co2-storage-research-interest/pull/1), an earlier README revision now superseded, and [abdelghafarfouda/co2-storage-research-interest#2](https://github.com/abdelghafarfouda/co2-storage-research-interest/pull/2), the E1 pilot, which should not be merged as it stands. Both were left unchanged.
-3. Agree the planned settings (proposal Appendix A) with a prospective supervisor, then freeze the pilot protocol before any new test data are generated.
-4. Optionally, choose a licence if others should be able to reuse the material.
+1. Decide what to do with the two open pull requests: [abdelghafarfouda/co2-storage-research-interest#1](https://github.com/abdelghafarfouda/co2-storage-research-interest/pull/1), an earlier README revision now superseded, and [abdelghafarfouda/co2-storage-research-interest#2](https://github.com/abdelghafarfouda/co2-storage-research-interest/pull/2), the E1 pilot, which should not be merged as it stands. Both were left unchanged.
+2. Agree the planned settings (proposal Appendix A) with a prospective supervisor, then freeze the pilot protocol before any new test data are generated.
+3. Optionally, choose a licence if others should be able to reuse the material.
