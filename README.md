@@ -89,11 +89,10 @@ Full lists are in the [proposal](docs/RESEARCH_PROPOSAL.md#references) and at th
 - Horne, R. N. (1995). *Modern Well Test Analysis: A Computer-Aided Approach*, 2nd edition. Petroway.
 - Grude, S., Landrø, M. & Osdal, B. (2013). Time-lapse pressure–saturation discrimination for CO₂ storage at the Snøhvit field. *International Journal of Greenhouse Gas Control* 19, 369–378.
 
-## Author, contribution and AI assistance
+## Author and attribution
 
-- **Author.** Abdelghafar Fouda. The verified result above comes from SubsurfaceML, a personal project developed in 2026 from the author's coursework for the MSc module CHEN60482 *Advanced Subsurface Modelling* (University of Manchester); see its README.
+- **Author.** Abdelghafar Fouda. The verified result above comes from SubsurfaceML, one of the author's [Personal Computational Projects — 2026](https://github.com/abdelghafarfouda/manchester-msc-projects), which grew out of coursework for the MSc module CHEN60482 *Advanced Subsurface Modelling* (University of Manchester); see its README.
 - **Earlier work.** The notebooks' *Background* sections describe the author's earlier MSc coursework. That coursework is not reproduced here.
-- **AI assistance.** AI tools were used to prepare the notebooks and their explanations. The consolidated proposal, the pilot protocol, this README, Notebook 00 and the October 2026 notebook text were drafted with Claude (Anthropic) at the author's request, from the repository material and SubsurfaceML. The author sets the research direction and is responsible for the content.
 - External methods, software and data are credited where used.
 
 ## Reuse status
