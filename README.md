@@ -16,7 +16,7 @@
 
 **What already exists.**
 
-- **Verified result** (peak pressure build-up only, layered model): in the completed [SubsurfaceML project](https://github.com/abdelghafarfouda/manchester-msc-projects/tree/68e532f/advanced-subsurface-modelling/SubsurfaceML) (merge commit `68e532f`), a verified radial CO₂–brine simulator and a hybrid surrogate predict **peak** build-up with 0.31 MPa RMSE on 100 reservoirs generated after the design was frozen. This does not show accuracy for whole trajectories or plume behaviour.
+- **Verified result** (peak pressure build-up only, layered model): in the 2026 [SubsurfaceML project](https://github.com/abdelghafarfouda/manchester-msc-projects/tree/68e532f/advanced-subsurface-modelling/SubsurfaceML) (merge commit `68e532f`), a verified radial CO₂–brine simulator and a hybrid surrogate predict **peak** build-up with 0.31 MPa RMSE on 100 reservoirs generated after the design was frozen. This does not show accuracy for whole trajectories or plume behaviour.
 - **Illustrative demonstrations:** four supporting notebooks show the methods on toy problems: reference checks, fair evaluation design, an **untrained** surrogate architecture and seismic detectability.
 - **Planned experiment:** everything else, including the first pilot.
 
@@ -40,7 +40,7 @@ Every claim in this repository carries one of three labels.
 | **Illustrative demonstration** | Runs here in seconds on a textbook problem, toy data or an untrained network. It shows how a method or check works; its numbers are not findings. |
 | **Planned experiment** | Proposed research; not done yet. |
 
-Notebook sections marked *Background* summarise the owner's earlier work that a demonstration builds on. They are context, not results.
+Notebook sections marked *Background* summarise the author's earlier work that a demonstration builds on. They are context, not results.
 
 ## Repository contents
 
@@ -61,13 +61,9 @@ Notebook sections marked *Background* summarise the owner's earlier work that a 
 
 The notebooks refer to work-package labels WP1–WP4 and other labels from an earlier proposal draft. [Appendix B of the proposal](docs/RESEARCH_PROPOSAL.md#appendix-b-labels-used-in-the-notebooks) maps them.
 
-## Corrections made in this revision
+## Earlier exploratory work
 
-- An unsourced field-case statement in Notebook 02 §8, a sealing-fault interpretation attributed to Snøhvit, has been removed. No primary source supporting that wording has been checked. The section now states only the physical point that its image-well model demonstrates.
-- The 0.31 MPa SubsurfaceML result is described as a **peak** build-up result, not as accuracy for complete trajectories.
-- Notebook 03 is labelled as an untrained architecture demonstration. Claims of physical consistency are withdrawn, and the required design correction is documented in its §6: inventories derived consistently from the maps, and nondecreasing cumulative outflow if that output is kept.
-- An open hydraulic boundary is no longer treated as implying CO₂ outflow. Zero outflow alone is not evidence of a defect (proposal §5.1).
-- The pilot is anchored to SubsurfaceML `68e532f`. The earlier E1 pilot branch, built on an older baseline and test split, is not merged, and its numbers are not used as results (proposal §8.2).
+An exploratory pilot of trajectory surrogates (E1) was built on an older SubsurfaceML baseline and test split. It is archived unmerged at commit [`411db4f`](https://github.com/abdelghafarfouda/CO2-storage-research-interest/commit/411db4f42efc2e9319e4709dd10b62d056e7f950), and its numbers are not used as results. The first pilot is anchored to SubsurfaceML `68e532f` instead (proposal §8.2).
 
 ## How to run
 
@@ -81,7 +77,7 @@ pip install -r requirements.txt
 jupyter lab                          # then open notebooks/00_research_overview.ipynb
 ```
 
-Notebook 00 uses only the Python standard library and runs in about a second. Notebooks 01–04 run on a CPU in under a minute together. Their random seeds are fixed (mostly 42), so the printed numbers repeat. Only Notebook 03 needs PyTorch. Notebooks 01–04 were last run from a clean kernel with Python 3.11.15 and the package versions in `requirements.txt`. In this revision only their text changed, not their code or outputs. No simulation, training or pilot experiment is run by anything in this repository.
+Notebook 00 uses only the Python standard library and runs in about a second. Notebooks 01–04 run on a CPU in under a minute together. Their random seeds are fixed (mostly 42), so the printed numbers repeat. Only Notebook 03 needs PyTorch. Notebooks 01–04 were last run from a clean kernel with Python 3.11.15 and the package versions in `requirements.txt`. Later edits changed only their text, not their code or outputs. No simulation, training or pilot experiment is run by anything in this repository.
 
 ## Key references
 
@@ -93,18 +89,13 @@ Full lists are in the [proposal](docs/RESEARCH_PROPOSAL.md#references) and at th
 - Horne, R. N. (1995). *Modern Well Test Analysis: A Computer-Aided Approach*, 2nd edition. Petroway.
 - Grude, S., Landrø, M. & Osdal, B. (2013). Time-lapse pressure–saturation discrimination for CO₂ storage at the Snøhvit field. *International Journal of Greenhouse Gas Control* 19, 369–378.
 
-## Attribution
+## Author, contribution and AI assistance
 
-- **Owner.** Abdelghafar Fouda owns this repository and is named as the author of the SubsurfaceML project, which was developed for the MSc module CHEN60482 *Advanced Subsurface Modelling* at the University of Manchester (see its README).
-- **Earlier work.** The notebooks' *Background* sections describe the owner's earlier coursework as stated in the notebooks. The original coursework notebooks are not reproduced here.
+- **Author.** Abdelghafar Fouda. The verified result above comes from SubsurfaceML, a personal project developed in 2026 from the author's coursework for the MSc module CHEN60482 *Advanced Subsurface Modelling* (University of Manchester); see its README.
+- **Earlier work.** The notebooks' *Background* sections describe the author's earlier MSc coursework. That coursework is not reproduced here.
+- **AI assistance.** AI tools were used to prepare the notebooks and their explanations. The consolidated proposal, the pilot protocol, this README, Notebook 00 and the October 2026 notebook text were drafted with Claude (Anthropic) at the author's request, from the repository material and SubsurfaceML. The author sets the research direction and is responsible for the content.
 - External methods, software and data are credited where used.
 
-## Reuse status and owner decisions
+## Reuse status
 
-**Reuse status.** No open-source licence has been granted for this repository. Third-party software remains under its own licences. SubsurfaceML, in a separate repository, is MIT-licensed.
-
-**Decisions only the owner can make** (none blocks reading the proposal):
-
-1. Decide what to do with the two open pull requests: [abdelghafarfouda/co2-storage-research-interest#1](https://github.com/abdelghafarfouda/co2-storage-research-interest/pull/1), an earlier README revision now superseded, and [abdelghafarfouda/co2-storage-research-interest#2](https://github.com/abdelghafarfouda/co2-storage-research-interest/pull/2), the E1 pilot, which should not be merged as it stands. Both were left unchanged.
-2. Agree the planned settings (proposal Appendix A) with a prospective supervisor, then freeze the pilot protocol before any new test data are generated.
-3. Optionally, choose a licence if others should be able to reuse the material.
+No open-source licence has been granted for this repository. Third-party software remains under its own licences. SubsurfaceML, in a separate repository, is MIT-licensed.
