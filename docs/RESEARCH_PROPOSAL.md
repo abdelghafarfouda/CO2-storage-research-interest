@@ -2,7 +2,7 @@
 
 **Research proposal: consolidated draft, October 2026.**
 
-> **About this document.** This is a new consolidated draft. It was written from the material in this repository and from the completed SubsurfaceML project (merge commit [`68e532f`](https://github.com/abdelghafarfouda/manchester-msc-projects/tree/68e532f/advanced-subsurface-modelling/SubsurfaceML)). The earlier proposal draft v0.6.3, which the notebooks cited, is not in this repository and was not available when this draft was prepared, so this is not a revision of that text. Where the notebooks use labels from that draft (WP1–WP4, P1–P4, M1–M3, R1–R5, U1–U4), Appendix B maps them to this document.
+> **About this document.** A consolidated draft (October 2026), written from the material in this repository and from the 2026 SubsurfaceML project (merge commit [`68e532f`](https://github.com/abdelghafarfouda/manchester-msc-projects/tree/68e532f/advanced-subsurface-modelling/SubsurfaceML)). The notebooks use labels from an earlier draft (v0.6.3: WP1–WP4, P1–P4, M1–M3, R1–R5, U1–U4); Appendix B maps them to this document.
 >
 > **Status labels.** Every piece of evidence is marked with one of three labels: **Verified result** (obtained under a protocol frozen before the test data existed), **Illustrative demonstration** (runs on toy data, a textbook solution or an untrained network; not a finding) and **Planned experiment** (not yet done). No experiment proposed here has been run. The settings in this document are **planned settings**. They and the evaluation protocol will be frozen before any new test data are generated or inspected.
 
