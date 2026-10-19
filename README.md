@@ -91,8 +91,8 @@ Full lists are in the [proposal](docs/RESEARCH_PROPOSAL.md#references) and at th
 
 ## Author and attribution
 
-- **Author.** Abdelghafar Fouda. The verified result above comes from SubsurfaceML, one of the author's [Personal Computational Projects — 2026](https://github.com/abdelghafarfouda/manchester-msc-projects), which grew out of coursework for the MSc module CHEN60482 *Advanced Subsurface Modelling* (University of Manchester); see its README.
-- **Earlier work.** The notebooks' *Background* sections describe the author's earlier MSc coursework. That coursework is not reproduced here.
+- **Author.** Abdelghafar Fouda. The verified result above comes from SubsurfaceML (*Surrogate-Assisted Screening of CO₂ Injection Schedules with Simulator Verification*), one of the author's [Personal Computational Projects — 2026](https://github.com/abdelghafarfouda/manchester-msc-projects), informed by the MSc module CHEN60482 *Advanced Subsurface Modelling* (University of Manchester); see [its README](https://github.com/abdelghafarfouda/manchester-msc-projects/blob/main/advanced-subsurface-modelling/SubsurfaceML/README.md).
+- **Earlier work.** The notebooks' *Background* sections summarise the author's own earlier exercises, practicals and implementations from MSc study; that earlier work is not reproduced here.
 - External methods, software and data are credited where used.
 
 ## Reuse status
